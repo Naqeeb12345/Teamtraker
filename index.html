@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TeamTrack | Employee Performance</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#"><span class="brand-mark">T</span><span>TeamTrack<small>WORKSPACE</small></span></a>
+      <div class="workspace-label">WORKSPACE</div>
+      <nav>
+        <button class="nav-link active" data-view="overview">▦ <span>Overview</span></button>
+        <button class="nav-link" data-view="attendance">◷ <span>Attendance</span></button>
+        <button class="nav-link" data-view="tasks">☑ <span>Today's Tasks</span></button>
+        <button class="nav-link" data-view="ar">▤ <span>AR claims</span></button>
+        <button class="nav-link" data-view="tickets">✉ <span>HR & support tickets</span></button>
+        <button class="nav-link" data-view="team">♙ <span>Team performance</span></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="demo-note">DEMO VERSION<br><span>Sample data only. Not connected to a company database.</span></div>
+        <div class="profile"><div class="avatar">AR</div><div><b>Ahsan Raza</b><small>Employee account</small></div></div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div><div class="eyebrow">THURSDAY, NOVEMBER 19, 2026</div><h1 id="page-title">Overview</h1></div>
+        <div class="top-actions"><span class="role-label">VIEW AS</span><select id="role-select" aria-label="Demo role"><option>Employee</option><option>Team Leader</option><option>HR Manager</option><option>Admin</option></select><button class="icon-button" id="notification-button" title="Notifications">♧ <span id="notification-count" class="notification-count">0</span></button></div>
+      </header>
+
+      <section class="view active" id="overview-view">
+        <div class="welcome"><div><p class="eyebrow light">YOUR WORKSPACE</p><h2>Good day, Ahsan <span>✦</span></h2><p>Here’s your team activity at a glance.</p></div><div class="date-pill">Thursday · 19 Nov</div></div>
+        <div class="stats-grid">
+          <article class="stat-card"><div class="stat-top"><span>Attendance status</span><span class="stat-icon green">◷</span></div><strong id="attendance-status">Not clocked in</strong><small id="attendance-sub">Start your workday</small></article>
+          <article class="stat-card"><div class="stat-top"><span>Tasks completed</span><span class="stat-icon blue">✓</span></div><strong id="completed-count">2 / 5</strong><small>Today's assigned tasks</small></article>
+          <article class="stat-card"><div class="stat-top"><span>Pending tasks</span><span class="stat-icon amber">≡</span></div><strong id="pending-count">3</strong><small>Keep your work moving</small></article>
+          <article class="stat-card"><div class="stat-top"><span>My open tickets</span><span class="stat-icon purple">✉</span></div><strong id="ticket-count">1</strong><small>Waiting for a response</small></article>
+        </div>
+        <div class="content-grid">
+          <article class="panel">
+            <div class="panel-heading"><div><h3>Today's tasks</h3><p>Your assigned work for today</p></div><button class="text-button" data-go="tasks">View all →</button></div>
+            <div id="overview-task-list" class="task-list"></div>
+          </article>
+          <article class="panel attendance-panel">
+            <div class="panel-heading"><div><h3>Time & attendance</h3><p>Record your workday</p></div><span class="live-dot">● LIVE DEMO</span></div>
+            <div class="time-display" id="live-time">--:--</div><div class="time-caption">LOCAL DEVICE TIME</div>
+            <div class="clock-actions"><button class="primary-button" id="clock-in">Clock in</button><button class="secondary-button" id="clock-out" disabled>Clock out</button></div>
+            <p class="helper" id="clock-message">Clock in when you start work.</p>
+          </article>
+        </div>
+        <article class="panel team-panel">
+          <div class="panel-heading"><div><h3>Team snapshot</h3><p>Illustrative team performance data</p></div><button class="text-button" data-go="team">View team →</button></div>
+          <div class="team-row"><div class="member"><div class="avatar blue-avatar">AR</div><div><b>Alex R.</b><small>Billing</small></div></div><div class="progress-wrap"><div class="progress"><span style="width:90%"></span></div><small>90%</small></div><span class="status-chip done">On track</span></div>
+          <div class="team-row"><div class="member"><div class="avatar orange-avatar">JM</div><div><b>Jamie M.</b><small>AR follow-up</small></div></div><div class="progress-wrap"><div class="progress"><span style="width:72%"></span></div><small>72%</small></div><span class="status-chip pending">In progress</span></div>
+          <div class="team-row"><div class="member"><div class="avatar purple-avatar">KT</div><div><b>Kris T.</b><small>Claims</small></div></div><div class="progress-wrap"><div class="progress"><span style="width:96%"></span></div><small>96%</small></div><span class="status-chip done">On track</span></div>
+        </article>
+      </section>
+
+      <section class="view" id="attendance-view">
+        <div class="section-intro attendance-intro"><div><h2>Attendance</h2><p>Track your working hours and manage your breaks.</p></div><span class="status-chip progressing" id="attendance-live-status">Not clocked in</span></div>
+        <div class="attendance-workspace">
+          <article class="panel attendance-clock-card">
+            <div class="clock-ring"><strong id="attendance-elapsed">00:00:00</strong><small>TIME SINCE CLOCK-IN</small></div>
+            <div class="clock-started"><span class="live-dot">●</span> Clocked in at <b id="attendance-in-record">—</b></div>
+            <div class="attendance-controls">
+              <button class="primary-button" id="attendance-clock-in" type="button">▶ Clock In</button>
+              <button class="secondary-button lunch-button" id="attendance-lunch" type="button" disabled>🍽 Start Lunch Break</button>
+              <button class="secondary-button tea-button" id="attendance-tea" type="button" disabled>☕ Start Tea Break</button>
+              <button class="danger-button" id="attendance-clock-out" type="button" disabled>⇥ Clock Out</button>
+            </div>
+            <p class="helper" id="attendance-action-message" aria-live="polite">Clock in when you begin your workday.</p>
+          </article>
+          <article class="panel attendance-summary-card">
+            <div class="panel-heading"><div><h3>Attendance Summary</h3><p>Today's recorded time</p></div></div>
+            <div class="attendance-metric"><span>Scheduled hours</span><b>8h</b></div>
+            <div class="attendance-metric"><span>Worked so far</span><b id="attendance-worked">0h 00m</b></div>
+            <div class="attendance-metric"><span>Break time</span><b id="attendance-break-total">0m</b></div>
+            <div class="attendance-metric"><span>Clock out</span><b id="attendance-out-record">—</b></div>
+            <p class="attendance-note">Your attendance activity is saved in this browser demo.</p>
+          </article>
+        </div>
+        <article class="panel attendance-timeline-panel">
+          <div class="panel-heading"><div><h3>Today's Timeline</h3><p>Clock-in, breaks and clock-out activity</p></div><span class="count-pill" id="attendance-event-count">0 events</span></div>
+          <div id="attendance-timeline" class="attendance-timeline"><p class="empty-state">No attendance activity recorded yet.</p></div>
+        </article>
+        <article class="panel correction-panel"><div><b>Attendance correction request</b><p>If you forget to clock in or out, submit a correction request to your Team Leader or HR.</p></div><button class="secondary-button" id="attendance-correction" type="button">Request correction</button></article>
+      </section>
+
+      <section class="view" id="tasks-view">
+        <div class="section-intro today-intro">
+          <div><h2>Today's Tasks</h2><p>Manage your assigned AR claims and track your daily progress.</p></div>
+          <span class="demo-flag">AR SPECIALIST VIEW</span>
+        </div>
+
+        <article class="panel task-filter-panel">
+          <div class="task-filters">
+            <label>Office<select id="today-office-filter"><option value="">All Offices</option></select></label>
+            <label>Insurance<select id="today-insurance-filter"><option value="">All Insurances</option></select></label>
+            <label>Aging Size<select id="today-aging-filter"><option value="">All Aging</option><option value="0-30">0–30 days</option><option value="31-60">31–60 days</option><option value="61-90">61–90 days</option><option value="91+">91+ days</option></select></label>
+            <label class="claim-search-label">Search<input id="today-claim-search" type="search" placeholder="Patient name or Claim #..."></label>
+            <button class="primary-button filter-apply" id="today-apply-filters" type="button">Apply filters</button>
+            <button class="secondary-button filter-reset" id="today-reset-filters" type="button">Reset</button>
+          </div>
+        </article>
+
+        <div class="stats-grid today-stats">
+          <article class="stat-card"><div class="stat-top"><span>Total assigned claims</span><span class="stat-icon blue">▤</span></div><strong id="today-total-claims">0</strong><small>Claims assigned to you</small></article>
+          <article class="stat-card"><div class="stat-top"><span>Completed today</span><span class="stat-icon green">✓</span></div><strong id="today-completed-claims">0</strong><small>Claims resolved today</small></article>
+          <article class="stat-card"><div class="stat-top"><span>Pending claims</span><span class="stat-icon amber">◷</span></div><strong id="today-pending-claims">0</strong><small>Open claims needing action</small></article>
+          <article class="stat-card"><div class="stat-top"><span>Total balance</span><span class="stat-icon purple">$</span></div><strong id="today-total-balance">$0</strong><small>Outstanding balance in view</small></article>
+        </div>
+
+        <article class="panel today-claims-panel">
+          <div class="panel-heading"><div><h3>My Assigned AR Claims</h3><p>Review claim details and open a record to add your work update.</p></div><div class="table-actions"><button class="secondary-button" id="today-upload-claims" type="button">↑ Upload claims</button><button class="secondary-button" id="today-download-report" type="button">↓ Download report</button></div></div>
+          <div class="table-wrap">
+            <table class="today-claims-table">
+              <thead><tr><th>#</th><th>Office</th><th>DOS</th><th>Patient name</th><th>DOB</th><th>Aging days</th><th>Insurance</th><th>Last note</th><th>Assigned to</th><th>Update note</th><th>Time</th><th>Total balance</th><th>Status</th><th>Action</th></tr></thead>
+              <tbody id="today-claims-table-body"></tbody>
+            </table>
+          </div>
+          <div class="table-footer"><span id="today-table-count">Showing 0 claims</span><span class="helper">Demo records only</span></div>
+        </article>
+
+        <div class="today-bottom-grid">
+          <article class="panel">
+            <div class="panel-heading"><div><h3>My Performance (This Month)</h3><p>Your recorded AR activity</p></div><button class="text-button" data-go="ar">View full report →</button></div>
+            <div class="performance-mini-grid">
+              <div><span class="mini-icon green">✓</span><small>Claims resolved</small><b id="today-my-resolved">0</b></div>
+              <div><span class="mini-icon blue">↻</span><small>Follow-ups done</small><b id="today-my-followups">0</b></div>
+              <div><span class="mini-icon amber">◷</span><small>Avg. response time</small><b>1.2h</b></div>
+              <div><span class="mini-icon purple">$</span><small>Balance handled</small><b id="today-my-balance">$0</b></div>
+            </div>
+          </article>
+          <article class="panel">
+            <div class="panel-heading"><div><h3>Quick Actions</h3><p>Common claim activities</p></div></div>
+            <div class="quick-action-grid">
+              <button type="button" id="quick-add-note"><span>☎</span>Add claim note</button>
+              <button type="button" id="quick-follow-up"><span>▦</span>Schedule follow-up</button>
+              <button type="button" id="quick-upload-claims"><span>↑</span>Upload claims sheet</button>
+              <button type="button" id="quick-view-reports"><span>▥</span>View reports</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="view" id="tickets-view">
+        <div class="section-intro tickets-intro"><div><h2>HR & Support Tickets</h2><p>Send a concern to the right people and continue the conversation in one shared ticket.</p></div><span class="count-pill" id="ticket-notification-summary">Shared conversations · Notifications on</span></div>
+        <div class="ticket-workspace">
+          <article class="panel ticket-create-panel"><div class="panel-heading"><div><h3>＋ Create a Support Ticket</h3><p>Select everyone who should receive this ticket.</p></div></div>
+            <form id="ticket-form" class="ticket-form">
+              <fieldset class="recipient-fieldset"><legend>Send a ticket to <span class="required-mark">*</span></legend>
+                <label class="recipient-option"><input type="checkbox" name="ticket-recipient" value="HR"> <span>HR</span></label>
+                <label class="recipient-option"><input type="checkbox" name="ticket-recipient" value="CEO"> <span>CEO</span></label>
+                <label class="recipient-option"><input type="checkbox" name="ticket-recipient" value="Team Lead"> <span>Team Lead</span></label>
+              </fieldset>
+              <p class="recipient-hint" id="recipient-hint">Choose one or more recipients. Everyone selected can read and reply.</p>
+              <label for="ticket-subject">Ticket subject <span class="required-mark">*</span></label><input id="ticket-subject" required maxlength="100" placeholder="e.g. Request for attendance correction">
+              <label for="ticket-description">Message <span class="required-mark">*</span></label><textarea id="ticket-description" required maxlength="1200" rows="6" placeholder="Describe your concern or request..."></textarea>
+              <label for="ticket-attachment">Attach file (optional)</label><input id="ticket-attachment" type="file" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx">
+              <button class="primary-button" type="submit">➤ Submit Ticket</button>
+              <p class="helper">Demo attachments are not uploaded to a server. Do not attach confidential or patient information.</p>
+            </form>
+          </article>
+          <div class="ticket-right-column">
+            <article class="panel"><div class="panel-heading"><div><h3>My Tickets</h3><p>Check status and open a conversation</p></div><span class="count-pill" id="ticket-total-count">0 tickets</span></div><div id="ticket-list" class="ticket-list"></div></article>
+            <article class="panel ticket-conversation-panel"><div class="panel-heading"><div><h3 id="ticket-conversation-title">Ticket conversation</h3><p id="ticket-conversation-subtitle">Select a ticket to view messages and reply.</p></div><span class="status-chip pending" id="ticket-conversation-status">No ticket selected</span></div>
+              <div id="ticket-conversation-meta" class="ticket-conversation-meta">Your selected recipients will share one conversation thread.</div>
+              <div id="ticket-messages" class="ticket-messages"><p class="empty-state">Select a ticket from My Tickets to view its conversation.</p></div>
+              <form id="ticket-reply-form" class="ticket-reply-form"><input id="ticket-reply-input" required maxlength="1000" placeholder="Type a reply..." disabled><button class="primary-button" id="ticket-reply-send" type="submit" disabled>➤ Send</button></form>
+              <div class="ticket-status-control"><label for="ticket-status-select">Update ticket status</label><select id="ticket-status-select" disabled><option>Open</option><option>In Progress</option><option>Resolved</option></select><span class="helper">Status changes are visible to everyone on the ticket.</span></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+
+
+      <section class="view" id="claim-view">
+        <div class="claim-detail-heading">
+          <div>
+            <button class="text-button back-to-tasks" type="button" id="claim-back-to-tasks">← Back to Today's Tasks</button>
+            <div class="section-intro claim-title-row"><div><h2 id="detail-claim-title">Claim details</h2><p id="detail-claim-subtitle">Review claim information, work history and next steps.</p></div><span class="status-chip pending" id="detail-claim-status">Pending</span></div>
+          </div>
+          <div class="claim-detail-actions"><button class="secondary-button" id="detail-print" type="button">Print summary</button><button class="primary-button" id="detail-focus-note" type="button">＋ Add update</button></div>
+        </div>
+        <div class="claim-detail-stats">
+          <article class="stat-card"><div class="stat-top"><span>Outstanding balance</span><span class="stat-icon purple">$</span></div><strong id="detail-balance">$0.00</strong><small>Current claim balance</small></article>
+          <article class="stat-card"><div class="stat-top"><span>Aging</span><span class="stat-icon amber">◷</span></div><strong id="detail-aging">0 days</strong><small>Since date of service</small></article>
+          <article class="stat-card"><div class="stat-top"><span>Activities logged</span><span class="stat-icon blue">≡</span></div><strong id="detail-activities">0</strong><small>Recorded claim actions</small></article>
+          <article class="stat-card"><div class="stat-top"><span>Next follow-up</span><span class="stat-icon green">↻</span></div><strong id="detail-next-followup">Not set</strong><small>Scheduled reminder</small></article>
+        </div>
+        <div class="claim-detail-layout">
+          <div class="claim-detail-main">
+            <article class="panel">
+              <div class="panel-heading"><div><h3>Claim information</h3><p>Core claim and patient reference details</p></div><span class="count-pill" id="detail-claim-id">CL-0000</span></div>
+              <div class="claim-info-grid" id="detail-info-grid"></div>
+            </article>
+            <article class="panel">
+              <div class="panel-heading"><div><h3>Claim activity timeline</h3><p>Chronological record of actions taken on this claim</p></div><span class="count-pill" id="detail-timeline-count">0 activities</span></div>
+              <div class="detail-timeline" id="detail-timeline"><p class="empty-state">No activity recorded yet.</p></div>
+            </article>
+            <article class="panel">
+              <div class="panel-heading"><div><h3>Insurance contact log</h3><p>Capture payer calls and reference information</p></div></div>
+              <form id="insurance-call-form" class="detail-form-grid">
+                <label>Insurance representative<input id="call-representative" maxlength="80" placeholder="Representative name (optional)"></label>
+                <label>Call reference number<input id="call-reference" maxlength="80" placeholder="Reference / confirmation #"></label>
+                <label>Contact method<select id="call-method"><option>Phone call</option><option>Payer portal</option><option>Email</option><option>Fax</option></select></label>
+                <label>Call outcome<select id="call-outcome"><option>Claim in process</option><option>Additional information required</option><option>Payment issued</option><option>Claim denied</option><option>No response</option><option>Other</option></select></label>
+                <label class="detail-form-wide">Summary<textarea id="call-summary" rows="3" maxlength="600" placeholder="Summarize the payer response and next step."></textarea></label>
+                <button class="primary-button detail-form-wide" type="submit">Save contact log</button>
+              </form>
+              <div id="detail-call-log" class="call-log-list"><p class="empty-state">No insurance contacts logged yet.</p></div>
+            </article>
+          </div>
+          <aside class="claim-detail-side">
+            <article class="panel">
+              <div class="panel-heading"><div><h3>Quick update</h3><p>Record the work you completed</p></div></div>
+              <form id="detail-update-form" class="ticket-form">
+                <label for="detail-action">Action performed</label>
+                <select id="detail-action"><option>Called insurance</option><option>Checked payer portal</option><option>Submitted requested documents</option><option>Reviewed claim status</option><option>Left voicemail</option><option>Sent follow-up email</option><option>Other follow-up</option></select>
+                <label for="detail-status-select">Claim status</label>
+                <select id="detail-status-select"><option>In process</option><option>Follow-up required</option><option>Pending insurance</option><option>Resolved</option><option>Denied</option></select>
+                <label for="detail-update-note">Work note</label>
+                <textarea id="detail-update-note" rows="4" maxlength="600" required placeholder="What did you do? What happened? What is the next step?"></textarea>
+                <label for="detail-followup-date">Next follow-up date</label>
+                <input id="detail-followup-date" type="date">
+                <button class="primary-button" type="submit">Save activity</button>
+              </form>
+            </article>
+            <article class="panel">
+              <div class="panel-heading"><div><h3>Assignment</h3><p>Current claim owner</p></div></div>
+              <div class="detail-assignment"><div class="avatar blue-avatar" id="detail-assignee-avatar">—</div><div><b id="detail-assignee">Unassigned</b><small>Assigned AR specialist</small></div></div>
+              <label class="detail-reassign-label">Reassign claim<select id="detail-reassign"><option value="">Unassigned</option><option>Alex R.</option><option>Jamie M.</option><option>Kris T.</option><option>Ahsan Raza</option></select></label>
+            </article>
+            <article class="panel privacy-reminder"><b>Privacy reminder</b><p>Use only the minimum necessary patient information in notes. This starter app uses sample data and is not approved for real patient records.</p></article>
+          </aside>
+        </div>
+      </section>
+
+      <section class="view" id="ar-view">
+        <div class="section-intro ar-intro">
+          <div><h2>AR Specialist Workspace</h2><p>Work assigned outstanding claims, document follow-ups and review claim history.</p></div>
+          <span class="demo-flag">DEMO CLAIM DATA</span>
+        </div>
+        <div class="stats-grid ar-stats">
+          <article class="stat-card"><div class="stat-top"><span>Assigned claims</span><span class="stat-icon blue">▤</span></div><strong id="ar-assigned-count">6</strong><small>Claims assigned to your team</small></article>
+          <article class="stat-card"><div class="stat-top"><span>Worked today</span><span class="stat-icon purple">◷</span></div><strong id="ar-worked-count">0</strong><small>Claims with an activity today</small></article>
+          <article class="stat-card"><div class="stat-top"><span>Resolved</span><span class="stat-icon green">✓</span></div><strong id="ar-resolved-count">1</strong><small>Marked resolved</small></article>
+          <article class="stat-card"><div class="stat-top"><span>Follow-up required</span><span class="stat-icon amber">↻</span></div><strong id="ar-followup-count">4</strong><small>Open claims needing next action</small></article>
+        </div>
+        <div class="panel upload-panel">
+          <div class="panel-heading"><div><h3>Outstanding claims upload</h3><p>Import a CSV file using the sample column names. Demo only—do not upload real patient data.</p></div><span class="count-pill">CSV import</span></div>
+          <div class="upload-row">
+            <input type="file" id="claims-file" accept=".csv,text/csv">
+            <button class="secondary-button" id="download-template" type="button">Download CSV template</button>
+          </div>
+          <p class="helper" id="upload-message">Expected columns: claim_id, office, dos, patient, insurance, aging_days, last_note, balance</p>
+        </div>
+        <div class="panel">
+          <div class="panel-heading"><div><h3>Claims assignment</h3><p>Team leaders can assign claims individually or distribute unassigned claims automatically.</p></div></div>
+          <div class="assignment-tools">
+            <label>Assign unassigned claims to
+              <select id="auto-assignee"><option>Alex R.</option><option>Jamie M.</option><option>Kris T.</option><option>Ahsan Raza</option></select>
+            </label>
+            <button class="secondary-button" id="assign-selected" type="button">Assign selected</button>
+            <button class="primary-button" id="auto-assign" type="button">Auto-distribute unassigned</button>
+          </div>
+          <div class="table-wrap">
+            <table class="claims-table">
+              <thead><tr><th><input type="checkbox" id="select-all-claims" aria-label="Select all claims"></th><th>Claim / Office</th><th>DOS</th><th>Patient</th><th>Insurance</th><th>Aging</th><th>Last note</th><th>Assigned to</th><th>Balance</th><th>Action</th></tr></thead>
+              <tbody id="claims-table-body"></tbody>
+            </table>
+          </div>
+          <p class="helper">Choose an assignee in a row for manual assignment, or select multiple claims and use “Assign selected”. Automatic distribution only assigns claims that are currently unassigned.</p>
+        </div>
+        <div class="content-grid ar-work-grid">
+          <article class="panel">
+            <div class="panel-heading"><div><h3>Work on a claim</h3><p>Select a claim from the table to record an action.</p></div><span class="count-pill" id="selected-claim-label">No claim selected</span></div>
+            <form id="claim-update-form" class="ticket-form">
+              <label for="claim-action">Action performed</label>
+              <select id="claim-action"><option>Called insurance</option><option>Checked payer portal</option><option>Submitted requested documents</option><option>Reviewed claim status</option><option>Left voicemail</option><option>Other follow-up</option></select>
+              <label for="claim-status">Claim status</label>
+              <select id="claim-status"><option>In process</option><option>Follow-up required</option><option>Pending insurance</option><option>Resolved</option><option>Denied</option></select>
+              <label for="claim-note">Update note</label>
+              <textarea id="claim-note" rows="4" maxlength="600" placeholder="Record the outcome and next step. Do not include unnecessary patient details."></textarea>
+              <label for="claim-next-date">Next follow-up date (optional)</label>
+              <input id="claim-next-date" type="date">
+              <button class="primary-button" type="submit">Save claim activity</button>
+            </form>
+          </article>
+          <article class="panel">
+            <div class="panel-heading"><div><h3>Claim activity history</h3><p>Audit trail for the selected claim.</p></div></div>
+            <div id="claim-history" class="claim-history"><p class="helper">Select a claim to view its activity history.</p></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="view" id="team-view">
+        <div class="section-intro"><h2>Team performance</h2><p>Sample team summary. Actual visibility will be controlled by account permissions.</p></div>
+        <article class="panel"><div class="panel-heading"><div><h3>Team task completion</h3><p>Illustrative figures, not real employee metrics</p></div></div>
+          <div class="team-row"><div class="member"><div class="avatar blue-avatar">AR</div><div><b>Alex R.</b><small>Billing</small></div></div><div class="progress-wrap"><div class="progress"><span style="width:90%"></span></div><small>90%</small></div><span class="status-chip done">On track</span></div>
+          <div class="team-row"><div class="member"><div class="avatar orange-avatar">JM</div><div><b>Jamie M.</b><small>AR follow-up</small></div></div><div class="progress-wrap"><div class="progress"><span style="width:72%"></span></div><small>72%</small></div><span class="status-chip pending">In progress</span></div>
+          <div class="team-row"><div class="member"><div class="avatar purple-avatar">KT</div><div><b>Kris T.</b><small>Claims</small></div></div><div class="progress-wrap"><div class="progress"><span style="width:96%"></span></div><small>96%</small></div><span class="status-chip done">On track</span></div>
+        </article>
+      </section>
+      <footer>TeamTrack · Starter prototype · Sample data only</footer>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
