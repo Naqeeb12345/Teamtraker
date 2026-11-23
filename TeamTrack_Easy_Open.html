@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TeamTrack | Employee Performance</title>
+  <style>@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap');
+:root{--navy:#183B56;--emerald:#087F5B;--teal:#2A9D8F;--soft-white:#F5FAF7;--blue:var(--emerald);--green:var(--emerald);--ink:#183B56;--muted:#718096;--line:#E2ECE6;--bg:var(--soft-white);}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:'DM Sans',Arial,sans-serif}.app-shell{min-height:100vh;display:flex}.sidebar{width:245px;background:#fff;border-right:1px solid var(--line);padding:27px 17px;display:flex;flex-direction:column;flex-shrink:0}.brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink);font:800 18px Manrope,sans-serif;margin:0 9px 43px}.brand-mark{width:38px;height:38px;background:var(--blue);border-radius:12px;color:#fff;display:grid;place-items:center;font-size:21px}.brand small{display:block;font:700 9px 'DM Sans';letter-spacing:2px;color:#94a0b2;margin-top:3px}.workspace-label,.eyebrow{font-size:10px;letter-spacing:1.5px;font-weight:700;color:#98a3b4}.workspace-label{padding:0 12px 12px}.sidebar nav{display:grid;gap:5px}.nav-link{border:0;background:transparent;text-align:left;padding:12px;border-radius:9px;color:#64748b;font:600 13px 'DM Sans';cursor:pointer;display:flex;gap:12px;align-items:center}.nav-link.active,.nav-link:hover{background:#E6F3EE;color:var(--blue)}.nav-link:first-letter{font-size:17px}.sidebar-bottom{margin-top:auto}.demo-note{background:#fff8e8;border:1px solid #f5e8c7;border-radius:10px;padding:12px;font-size:10px;font-weight:700;letter-spacing:1px;color:#926d21;line-height:1.8}.demo-note span{font-size:11px;letter-spacing:0;font-weight:400;color:#806f50}.profile{display:flex;align-items:center;gap:10px;padding:18px 5px 0;font-size:12px}.profile small,.member small{display:block;color:var(--muted);font-size:11px;margin-top:3px}.avatar{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#E1F1EB;color:#087F5B;font-size:11px;font-weight:700}.main{max-width:1500px;width:100%;padding:28px 38px 22px;margin:0 auto}.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}.topbar h1{font:800 25px Manrope;margin:5px 0 0}.top-actions{display:flex;align-items:center;gap:10px}.role-label{font-size:9px;letter-spacing:1px;color:var(--muted);font-weight:700}.top-actions select,select,input,textarea{font:13px 'DM Sans';border:1px solid var(--line);border-radius:8px;padding:10px;background:#fff;color:var(--ink)}.icon-button{border:1px solid var(--line);background:#fff;border-radius:9px;padding:9px 12px;font-size:17px}.view{display:none}.view.active{display:block}.welcome{background:linear-gradient(115deg,#183B56,#087F5B);color:white;border-radius:15px;padding:25px 28px;display:flex;justify-content:space-between;align-items:center;margin-bottom:17px}.welcome h2{font:800 23px Manrope;margin:7px 0}.welcome h2 span{color:#f4c66a}.welcome p:not(.eyebrow){margin:0;color:#d1dced;font-size:12px}.eyebrow.light{color:#a9bddc}.date-pill{background:#ffffff18;border:1px solid #ffffff35;padding:9px 13px;border-radius:20px;font-size:11px}.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-bottom:16px}.stat-card,.panel{background:white;border:1px solid var(--line);border-radius:12px}.stat-card{padding:16px}.stat-top{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:11px}.stat-icon{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;font-size:16px}.green{background:#E4F3EC;color:#087F5B}.blue{background:#E6F3EE;color:#087F5B}.amber{background:#fff5df;color:#bc861e}.purple{background:#f2edff;color:#8056c7}.stat-card strong{display:block;font:800 21px Manrope;margin:13px 0 3px}.stat-card small{color:var(--muted);font-size:10px}.content-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:14px;margin-bottom:15px}.panel{padding:18px;margin-bottom:15px}.panel-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}.panel-heading h3{font:700 14px Manrope;margin:0}.panel-heading p,.section-intro p{font-size:11px;color:var(--muted);margin:5px 0 0}.text-button{border:0;background:none;color:var(--blue);font:700 11px 'DM Sans';cursor:pointer}.task-list{display:grid}.task-item{display:flex;align-items:center;gap:11px;padding:11px 0;border-top:1px solid #f0f2f6}.task-item:first-child{border-top:0}.task-check{width:17px;height:17px;accent-color:var(--blue)}.task-name{font-size:12px;font-weight:600;flex:1}.task-name.completed{text-decoration:line-through;color:#9aa4b2}.task-meta{font-size:10px;color:var(--muted)}.status-chip,.count-pill{font-size:9px;font-weight:700;border-radius:20px;padding:5px 8px;white-space:nowrap}.done{background:#E4F3EC;color:#087F5B}.pending{background:#fff5df;color:#a87613}.progressing{background:#E6F3EE;color:#087F5B}.attendance-panel{text-align:center}.live-dot{font-size:8px;color:#087F5B;font-weight:700}.time-display{font:800 34px Manrope;letter-spacing:1px;margin-top:25px}.time-caption{font-size:8px;letter-spacing:1.5px;color:#9aa4b2;margin:4px 0 19px}.clock-actions{display:flex;gap:8px}.primary-button,.secondary-button{border:0;border-radius:8px;padding:11px 14px;font:700 11px 'DM Sans';cursor:pointer}.primary-button{background:var(--blue);color:#fff}.primary-button:hover{background:#066B4D}.secondary-button{background:#EAF2EF;color:#64748b}.secondary-button:disabled{opacity:.45;cursor:not-allowed}.clock-actions button{flex:1}.helper{font-size:10px;color:var(--muted);margin:13px 0 0}.team-row{display:flex;align-items:center;gap:20px;padding:12px 0;border-top:1px solid #f0f2f6}.team-row:first-of-type{border-top:0}.member{display:flex;align-items:center;gap:9px;width:170px;font-size:11px}.blue-avatar{background:#E1F1EB;color:#087F5B}.orange-avatar{background:#fff0e6;color:#c56c2d}.purple-avatar{background:#f1eaff;color:#8056c7}.progress-wrap{display:flex;align-items:center;gap:9px;flex:1}.progress{height:7px;background:#edf0f5;border-radius:20px;overflow:hidden;flex:1}.progress span{height:100%;display:block;background:#2A9D8F;border-radius:20px}.progress-wrap small{font-size:10px;color:var(--muted);width:28px}.section-intro{margin:6px 0 18px}.section-intro h2{font:800 20px Manrope;margin:0}.attendance-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.attendance-summary div{background:#F5FAF7;border-radius:9px;padding:17px}.attendance-summary small{display:block;color:var(--muted);font-size:10px;margin-bottom:8px}.attendance-summary b{font:700 16px Manrope}.ticket-grid{grid-template-columns:1fr 1fr}.ticket-form{display:grid;gap:8px}.ticket-form label{font-size:11px;font-weight:700;margin-top:5px}.ticket-form input,.ticket-form textarea,.ticket-form select{width:100%}.ticket-form textarea{resize:vertical}.ticket-form button{margin-top:8px}.ticket{border-top:1px solid #f0f2f6;padding:13px 0}.ticket:first-child{border-top:0}.ticket b{font-size:12px}.ticket p{font-size:10px;color:var(--muted);margin:5px 0}.ticket small{font-size:9px;color:#8792a3}.count-pill{background:#E6F3EE;color:var(--blue)}footer{text-align:center;color:#a0a9b6;font-size:10px;padding:15px}
+@media(max-width:900px){.sidebar{width:205px}.main{padding:24px 20px}.stats-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:650px){.app-shell{display:block}.sidebar{width:100%;padding:13px 14px;border-right:0;border-bottom:1px solid var(--line)}.brand{margin:0 5px 12px}.workspace-label,.sidebar-bottom{display:none}.sidebar nav{display:flex;overflow:auto}.nav-link{white-space:nowrap;padding:9px;font-size:11px}.main{padding:20px 13px}.topbar{align-items:flex-start;gap:10px}.topbar h1{font-size:21px}.top-actions{gap:5px}.role-label{display:none}.top-actions select{max-width:125px;padding:8px;font-size:11px}.welcome{padding:20px;align-items:flex-start}.date-pill{display:none}.content-grid,.ticket-grid{grid-template-columns:1fr}.stats-grid{gap:8px}.stat-card{padding:12px}.team-row{gap:9px}.member{width:112px}.member small{font-size:9px}.status-chip{font-size:8px}.attendance-summary{grid-template-columns:1fr}.team-panel{overflow:hidden}}
+
+
+/* AR Specialist module */
+.ar-intro{display:flex;align-items:center;justify-content:space-between;gap:12px}.demo-flag{font-size:9px;letter-spacing:1px;font-weight:800;color:#9a6a16;background:#fff5df;padding:8px 10px;border-radius:20px;white-space:nowrap}.ar-stats{margin-top:14px}.upload-panel{border-style:dashed}.upload-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.upload-row input{max-width:360px;font-size:11px}.assignment-tools{display:flex;align-items:end;gap:9px;flex-wrap:wrap;margin-bottom:15px}.assignment-tools label{display:grid;gap:6px;font-size:10px;font-weight:700;color:#64748b}.assignment-tools select{min-width:145px}.table-wrap{width:100%;overflow:auto}.claims-table{width:100%;border-collapse:collapse;min-width:1050px;text-align:left}.claims-table th{font-size:9px;letter-spacing:.4px;color:#8390a3;background:#F5FAF7;padding:11px 9px;white-space:nowrap}.claims-table td{font-size:10px;padding:10px 9px;border-top:1px solid #edf0f5;vertical-align:middle}.claims-table td b{font-size:10px}.claims-table select{font-size:10px;padding:6px;max-width:110px}.claims-table .claim-open{border:0;background:#E6F3EE;color:#087F5B;padding:7px 9px;border-radius:7px;font-size:10px;font-weight:700;cursor:pointer;white-space:nowrap}.claims-table .claim-id{display:block;color:#087F5B;font-weight:700;margin-bottom:3px}.claims-table .muted-cell{color:#7c8798}.ar-work-grid{grid-template-columns:1fr 1fr;margin-top:14px}.claim-history{max-height:430px;overflow:auto}.history-entry{padding:12px 0;border-top:1px solid #edf0f5}.history-entry:first-child{border-top:0}.history-entry b{font-size:11px}.history-entry p{font-size:10px;color:#657287;line-height:1.5;margin:5px 0}.history-entry small{font-size:9px;color:#929dad}.history-entry .status-chip{display:inline-block;margin-left:6px}.empty-state{font-size:11px;color:#8b96a7;padding:18px 0}.table-balance{font-weight:700;white-space:nowrap}
+@media(max-width:900px){.ar-work-grid{grid-template-columns:1fr}}@media(max-width:650px){.ar-intro{align-items:flex-start}.demo-flag{font-size:8px}.assignment-tools{align-items:stretch}.assignment-tools label{width:100%}.assignment-tools button{flex:1}.upload-row input{max-width:100%;width:100%}}
+
+/* Today's Tasks — AR Specialist claims workspace */
+.today-intro{display:flex;align-items:center;justify-content:space-between;gap:12px}.task-filter-panel{padding:14px 16px}.task-filters{display:grid;grid-template-columns:1fr 1fr .9fr 1.5fr auto auto;gap:10px;align-items:end}.task-filters label{display:grid;gap:6px;font-size:10px;font-weight:700;color:#64748b}.task-filters select,.task-filters input{width:100%;min-width:0}.task-filters .primary-button,.task-filters .secondary-button{white-space:nowrap;height:38px}.today-stats{margin-top:14px}.today-claims-panel{margin-top:14px}.table-actions{display:flex;gap:8px;flex-wrap:wrap}.today-claims-table{width:100%;border-collapse:separate;border-spacing:0;min-width:1450px;text-align:left}.today-claims-table th{position:sticky;top:0;background:#f1f5ff;color:#52617b;font-size:9px;letter-spacing:.2px;padding:12px 9px;white-space:nowrap;border-bottom:1px solid #dfe7f5}.today-claims-table td{font-size:10px;padding:11px 9px;border-bottom:1px solid #edf0f5;vertical-align:middle;color:#273650}.today-claims-table tr:hover td{background:#F0F7F3}.today-claims-table .claim-ref{display:block;color:#087F5B;font-weight:800;margin-bottom:3px}.today-claims-table .muted-cell{display:block;color:#8591a4;font-size:9px}.today-claims-table .aging-pill{display:inline-block;padding:4px 7px;border-radius:12px;background:#fff0e1;color:#b96813;font-weight:800;white-space:nowrap}.today-claims-table .aging-pill.high{background:#ffe5e5;color:#c13c3c}.today-claims-table .aging-pill.low{background:#e4f7ed;color:#16834c}.today-claims-table .status-chip{white-space:nowrap}.today-claims-table .claim-view-btn{border:0;background:#1765e9;color:#fff;padding:7px 10px;border-radius:7px;font-size:10px;font-weight:700;cursor:pointer;white-space:nowrap}.table-footer{display:flex;justify-content:space-between;align-items:center;padding:12px 4px 0;font-size:10px;color:#657287}.today-bottom-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:14px;margin-top:14px}.performance-mini-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.performance-mini-grid>div{background:#F5FAF7;border:1px solid #EAF2EF;border-radius:10px;padding:12px 10px;display:grid;gap:6px;min-width:0}.performance-mini-grid small{font-size:9px;color:#748198}.performance-mini-grid b{font-size:17px;color:#183B56}.mini-icon{font-size:16px;font-weight:800}.mini-icon.green{color:#16a365}.mini-icon.blue{color:#2874e8}.mini-icon.amber{color:#e58a20}.mini-icon.purple{color:#8454df}.quick-action-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.quick-action-grid button{border:1px solid #e4eaf5;border-radius:10px;background:#F0F7F3;padding:12px 8px;display:grid;justify-items:center;gap:7px;color:#31466a;font-size:10px;font-weight:700;cursor:pointer}.quick-action-grid button:hover{border-color:#65B9A9;background:#EFF7F3}.quick-action-grid button span{font-size:20px;color:#246be5}.claim-search-label{min-width:170px}
+@media(max-width:1100px){.task-filters{grid-template-columns:repeat(3,minmax(0,1fr))}.today-bottom-grid{grid-template-columns:1fr}}
+@media(max-width:650px){.today-intro{align-items:flex-start}.task-filters{grid-template-columns:1fr 1fr}.task-filters .claim-search-label{grid-column:span 2}.task-filters .filter-apply,.task-filters .filter-reset{width:100%}.table-actions{width:100%}.table-actions button{flex:1}.performance-mini-grid{grid-template-columns:repeat(2,1fr)}.quick-action-grid{grid-template-columns:repeat(2,1fr)}.table-footer{align-items:flex-start;gap:8px;flex-direction:column}}
+
+
+/* Individual claim details page */
+.claim-detail-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin:4px 0 16px}.back-to-tasks{padding:0;margin:0 0 12px}.claim-title-row{display:flex;align-items:center;gap:12px;margin:0}.claim-title-row h2{font:800 21px Manrope;margin:0}.claim-title-row p{font-size:11px;color:var(--muted);margin:5px 0 0}.claim-detail-actions{display:flex;gap:8px}.claim-detail-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:15px}.claim-detail-layout{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(280px,.9fr);gap:15px;align-items:start}.claim-detail-main,.claim-detail-side{min-width:0}.claim-info-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 15px}.claim-info-item{padding:12px 0;border-top:1px solid #edf0f5;min-width:0}.claim-info-item small{display:block;color:#8490a2;font-size:9px;margin-bottom:5px}.claim-info-item b{display:block;font-size:11px;overflow-wrap:anywhere}.detail-timeline{display:grid}.detail-timeline-entry{display:grid;grid-template-columns:28px 1fr;gap:10px;padding:13px 0;border-top:1px solid #edf0f5}.detail-timeline-entry:first-child{border-top:0}.timeline-marker{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:#E6F3EE;color:#3266dc;font-size:12px;font-weight:800}.timeline-entry-content b{font-size:11px}.timeline-entry-content p{font-size:10px;line-height:1.55;color:#637188;margin:5px 0}.timeline-entry-content small{font-size:9px;color:#929dad}.timeline-meta{display:flex;align-items:center;gap:7px;flex-wrap:wrap}.detail-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.detail-form-grid label,.detail-reassign-label{display:grid;gap:6px;font-size:10px;font-weight:700;color:#64748b}.detail-form-grid input,.detail-form-grid select,.detail-form-grid textarea,.detail-reassign-label select{width:100%;min-width:0}.detail-form-wide{grid-column:1/-1}.call-log-list{margin-top:12px}.call-log-entry{border-top:1px solid #edf0f5;padding:11px 0}.call-log-entry b{font-size:10px}.call-log-entry p{font-size:10px;color:#64748b;line-height:1.5;margin:5px 0}.call-log-entry small{font-size:9px;color:#929dad}.detail-assignment{display:flex;align-items:center;gap:10px;margin:5px 0 15px}.detail-assignment b{font-size:11px}.detail-assignment small{display:block;font-size:9px;color:#8490a2;margin-top:3px}.detail-reassign-label{padding-top:10px;border-top:1px solid #edf0f5}.privacy-reminder{background:#fff9eb;border-color:#f3e7c7}.privacy-reminder b{font-size:10px;color:#926d21}.privacy-reminder p{font-size:10px;line-height:1.55;color:#806f50;margin:6px 0 0}.claim-detail-side .panel{position:relative}.claim-detail-side .ticket-form button{width:100%}
+@media(max-width:1050px){.claim-detail-layout{grid-template-columns:1fr}.claim-detail-side{display:grid;grid-template-columns:1fr 1fr;gap:14px}.claim-detail-side .panel{margin-bottom:0}.claim-detail-side .privacy-reminder{grid-column:1/-1}}
+@media(max-width:700px){.claim-detail-heading{align-items:flex-start;flex-direction:column}.claim-detail-actions{width:100%}.claim-detail-actions button{flex:1}.claim-detail-stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.claim-info-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.claim-detail-side{grid-template-columns:1fr}.claim-detail-side .privacy-reminder{grid-column:auto}.detail-form-grid{grid-template-columns:1fr}.detail-form-wide{grid-column:auto}.claim-title-row{align-items:flex-start;flex-direction:column}}
+
+/* Employee Attendance and shared HR / Support ticket pages */
+.notification-count{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;padding:0 5px;margin-left:4px;border-radius:20px;background:#e5484d;color:#fff;font-size:10px;font-weight:800}
+.attendance-intro,.tickets-intro{display:flex;justify-content:space-between;align-items:center;gap:14px}.attendance-intro .section-intro,.tickets-intro .section-intro{margin:0}
+.attendance-workspace{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(260px,.8fr);gap:14px;margin-bottom:14px}.attendance-clock-card{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:330px}.clock-ring{width:190px;height:190px;border:10px solid #D7ECE3;border-top-color:#087F5B;border-right-color:#087F5B;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:4px auto 15px}.clock-ring strong{font:800 29px Manrope;color:#152d59;letter-spacing:-1px}.clock-ring small{font-size:9px;color:#8190a6;font-weight:800;letter-spacing:1px;margin-top:7px}.clock-started{font-size:11px;color:#64748b;margin-bottom:15px}.live-dot{color:#16a36a;margin-right:5px}.attendance-controls{width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.attendance-controls button{min-height:43px}.lunch-button{background:#fff4e8!important;color:#bd6a17!important;border-color:#f4d7b8!important}.tea-button{background:#edf5ff!important;color:#2868ce!important;border-color:#d7e6ff!important}.danger-button{border:1px solid #ffd6d6;background:#fff0f0;color:#d64242;border-radius:8px;padding:10px 14px;font:700 12px 'DM Sans';cursor:pointer}.danger-button:disabled{opacity:.45;cursor:not-allowed}.attendance-summary-card{min-height:330px}.attendance-metric{display:flex;justify-content:space-between;gap:12px;padding:17px 3px;border-bottom:1px solid #edf0f5;font-size:12px;color:#68778e}.attendance-metric b{color:#1c3154}.attendance-note{margin-top:17px;padding:12px;border-radius:9px;background:#eef8f2;color:#287a50;font-size:10px;line-height:1.5}.attendance-timeline-panel{margin-bottom:14px}.attendance-timeline{display:grid}.attendance-event{display:grid;grid-template-columns:14px minmax(120px,1fr) minmax(100px,auto);align-items:center;gap:12px;padding:13px 4px;border-top:1px solid #edf0f5}.attendance-event:first-child{border-top:0}.attendance-event-dot{width:10px;height:10px;border-radius:50%;background:#286de5}.attendance-event-dot.break-start{background:#e69a35}.attendance-event-dot.break-end{background:#16a36a}.attendance-event-dot.clock-out{background:#dc5555}.attendance-event b{display:block;font-size:12px}.attendance-event small{display:block;color:#8995a7;font-size:10px;margin-top:4px}.attendance-event-time{font-size:10px;color:#697990;text-align:right}.correction-panel{display:flex;align-items:center;justify-content:space-between;gap:14px;background:#EFF7F3;border-color:#D7ECE3}.correction-panel b{font-size:12px;color:#254b8e}.correction-panel p{font-size:10px;color:#687b9a;margin:5px 0 0;line-height:1.5}
+.ticket-workspace{display:grid;grid-template-columns:minmax(290px,.78fr) minmax(0,1.35fr);gap:14px;align-items:start}.ticket-create-panel{position:sticky;top:12px}.ticket-right-column{display:grid;gap:14px;min-width:0}.ticket-form{display:grid;gap:9px}.ticket-form label{font-size:11px;font-weight:700;color:#53627a}.ticket-form input,.ticket-form textarea,.ticket-form select{width:100%;min-width:0}.ticket-form textarea{resize:vertical}.ticket-form button{width:100%;margin-top:4px}.recipient-fieldset{border:0;padding:0;margin:0;display:flex;gap:8px;flex-wrap:wrap}.recipient-fieldset legend{font-size:11px;font-weight:800;color:#263b5e;margin-bottom:9px}.required-mark{color:#df4b55}.recipient-option{display:flex;align-items:center;gap:6px;padding:9px 12px;border:1px solid #D7ECE3;border-radius:9px;background:#f7faff;cursor:pointer}.recipient-option input{width:auto;accent-color:#2867e8}.recipient-option span{font-size:11px;color:#29466f}.recipient-hint{font-size:10px;color:#238054;background:#eef8f2;padding:9px 10px;border-radius:8px;margin:0 0 5px;line-height:1.45}.ticket-list{display:grid;gap:8px;max-height:300px;overflow:auto}.ticket-list-item{width:100%;text-align:left;border:1px solid #e7edf6;border-radius:10px;background:#fff;padding:11px 12px;display:grid;gap:6px;cursor:pointer;color:#263b5e}.ticket-list-item:hover,.ticket-list-item.selected{border-color:#65B9A9;background:#f5f8ff}.ticket-list-top{display:flex;justify-content:space-between;align-items:center;gap:8px}.ticket-list-top>b{font-size:10px;color:#376bd0}.ticket-list-item strong{font-size:12px}.ticket-list-item>small{font-size:9px;color:#8190a5}.ticket-conversation-panel{min-height:430px}.ticket-conversation-meta{font-size:10px;color:#6e7d94;background:#f5f8fd;border:1px solid #e8eef7;padding:10px;border-radius:8px;margin-bottom:10px}.ticket-messages{display:grid;gap:10px;max-height:360px;overflow:auto;padding:3px 2px 12px}.ticket-message{display:grid;grid-template-columns:32px minmax(0,1fr);gap:9px;align-items:start}.ticket-message-avatar{width:31px;height:31px;border-radius:50%;display:grid;place-items:center;background:#e8efff;color:#2865d9;font-size:10px;font-weight:800}.ticket-message.own-message .ticket-message-avatar{background:#dff5e9;color:#168457}.ticket-message-body{border:1px solid #e8edf5;background:#fafcff;border-radius:10px;padding:10px 12px;min-width:0}.ticket-message.own-message .ticket-message-body{background:#f1f6ff;border-color:#D7ECE3}.ticket-message-heading{display:flex;justify-content:space-between;gap:8px;align-items:center}.ticket-message-heading b{font-size:10px;color:#263c60}.ticket-message-heading small{font-size:9px;color:#8996a8;text-align:right}.ticket-message-body p{font-size:11px;line-height:1.5;color:#4c5e79;margin:6px 0 0;white-space:pre-wrap;overflow-wrap:anywhere}.ticket-reply-form{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;padding-top:10px;border-top:1px solid #edf0f5}.ticket-reply-form input{width:100%;min-width:0}.ticket-reply-form button{white-space:nowrap}.ticket-status-control{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-top:12px}.ticket-status-control label{font-size:10px;font-weight:700;color:#64748b}.ticket-status-control select{padding:7px 9px;font-size:10px}.ticket-status-control .helper{margin:0;font-size:9px}.count-pill{display:inline-flex;align-items:center;padding:7px 10px;border-radius:20px;background:#edf3ff;color:#3566bd;font-size:9px;font-weight:800;white-space:nowrap}
+@media(max-width:1050px){.ticket-workspace{grid-template-columns:1fr}.ticket-create-panel{position:static}.attendance-workspace{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.attendance-workspace{grid-template-columns:1fr}.attendance-clock-card,.attendance-summary-card{min-height:0}.attendance-intro,.tickets-intro{align-items:flex-start;flex-direction:column}.correction-panel{align-items:flex-start;flex-direction:column}.correction-panel button{width:100%}.attendance-event{grid-template-columns:12px 1fr}.attendance-event-time{grid-column:2;text-align:left}.ticket-status-control{align-items:flex-start;flex-direction:column}.ticket-message-heading{align-items:flex-start;flex-direction:column}.ticket-message-heading small{text-align:left}.ticket-reply-form{grid-template-columns:1fr}.ticket-reply-form button{width:100%}}
+
+/* Add Today Task + daily activity bars */
+[hidden]{display:none!important}
+.activity-overall{display:grid;gap:8px;padding:14px;margin-bottom:6px;border-radius:10px;background:#EFF7F3;border:1px solid #D7ECE3}.activity-overall small{font-size:9px;letter-spacing:1.2px;font-weight:800;color:#6b7c99}.activity-overall strong{display:block;font:800 26px Manrope;color:#183B56;margin-top:3px}.progress.big{height:11px}
+.activity-row{display:grid;grid-template-columns:1fr 44px;gap:6px 10px;align-items:center;padding:10px 0;border-top:1px solid #f0f2f6}.activity-row:first-of-type{border-top:0}.activity-row-top{grid-column:1/-1;display:flex;justify-content:space-between;gap:8px;font-size:11px;font-weight:600}.activity-row-top i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:7px}.activity-row-qty{color:var(--muted);font-weight:500}.activity-pct{font-size:12px;text-align:right;color:#183B56}
+.activity-log{display:grid;max-height:420px;overflow:auto}.activity-log-item{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;padding:11px 0;border-top:1px solid #f0f2f6}.activity-log-item:first-child{border-top:0}.activity-log-item b{font-size:12px}.activity-log-item small{display:block;font-size:10px;color:var(--muted);margin-top:3px;overflow-wrap:anywhere}.activity-qty{font:800 13px Manrope;color:#087F5B}.activity-del{border:0;background:#fff0f0;color:#d64242;width:24px;height:24px;border-radius:50%;cursor:pointer;font-size:14px;line-height:1}
+.modal-backdrop{position:fixed;inset:0;background:rgba(23,43,77,.55);display:grid;place-items:center;z-index:50;padding:16px}.modal{background:#fff;border-radius:14px;width:100%;max-width:440px;padding:20px;max-height:92vh;overflow:auto;box-shadow:0 18px 50px rgba(0,0,0,.25)}.modal-head{display:flex;justify-content:space-between;align-items:center}.modal-head h3{font:800 17px Manrope;margin:0}.modal-close{border:0;background:#EAF2EF;color:#64748b;width:28px;height:28px;border-radius:50%;font-size:18px;cursor:pointer;line-height:1}.modal-sub{font-size:12px;color:var(--muted);margin:8px 0 14px}.activity-options{display:grid;grid-template-columns:1fr 1fr;gap:9px}.activity-option{display:flex;align-items:center;gap:10px;padding:13px 12px;border:1px solid #D7ECE3;border-radius:10px;background:#f7faff;color:#29466f;font:700 12px 'DM Sans';cursor:pointer;text-align:left}.activity-option:hover{border-color:#65B9A9;background:#EFF7F3}.activity-option span{font-size:17px;width:20px;text-align:center}.activity-chosen{display:inline-block;justify-self:start;margin-top:12px;padding:7px 11px;border-radius:20px;background:#E6F3EE;color:#087F5B;font-size:11px;font-weight:800}.modal-actions{display:flex;gap:9px;margin-top:6px}.modal-actions button{flex:1;margin-top:0!important}
+@media(max-width:650px){.activity-options{grid-template-columns:1fr}}
+
+/* Work history graph */
+.history-panel{margin-top:0}.range-toggle{display:flex;background:#EAF2EF;border-radius:9px;padding:3px;gap:2px}.range-toggle button{border:0;background:transparent;padding:7px 13px;border-radius:7px;font:700 11px 'DM Sans';color:#64748b;cursor:pointer}.range-toggle button.active{background:#fff;color:var(--blue);box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.history-chart svg{width:100%;height:auto;display:block;font-family:'DM Sans',Arial,sans-serif}.history-legend{display:flex;flex-wrap:wrap;gap:6px 16px;margin:8px 0 4px;font-size:10px;color:#64748b}.history-legend i{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:6px}
+.history-total-title{font:700 12px Manrope;margin:16px 0 10px;color:#183B56}.history-totals{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.history-total{background:#F5FAF7;border:1px solid #EAF2EF;border-top:3px solid #087F5B;border-radius:10px;padding:12px}.history-total small{display:block;font-size:10px;color:#748198;margin-bottom:6px}.history-total b{font:800 18px Manrope;color:#183B56;overflow-wrap:anywhere}
+.history-demo{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:14px;padding-top:10px;border-top:1px dashed #e1e8f2;font-size:10px;color:var(--muted)}
+@media(max-width:900px){.history-totals{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.page-note{font-size:12px!important;margin:0!important}.activity-extra{font-size:10px;font-weight:700;color:#087F5B}
+.history-legend i.target-key{width:14px;height:0;border-top:2px dashed #087F5B;border-radius:0;background:none!important}
+.followup-wrap{display:grid;gap:9px}.activity-auto{font-size:9px;font-weight:800;color:#087F5B;background:#E4F3EC;border-radius:20px;padding:4px 8px}
+.claims-progress{margin-bottom:14px}
+.claims-progress .activity-row{border-top:0}.claims-bar{cursor:pointer;border-radius:10px;padding:0 10px;border:1px solid transparent;margin-bottom:4px}.claims-bar:hover{background:#F5FAF7}.claims-bar.active{background:#EFF7F3;border-color:#D7ECE3}.claims-bar:focus-visible{outline:2px solid #65B9A9}
+.timeline-edit{border:0;background:#E6F3EE;color:#087F5B;border-radius:7px;padding:4px 8px;font:700 10px 'DM Sans';cursor:pointer;margin-left:auto}.timeline-edit-form{display:grid;gap:8px;min-width:0}.timeline-edit-form select,.timeline-edit-form textarea{width:100%;min-width:0}.timeline-edit-actions{display:flex;gap:8px;justify-content:flex-end}.timeline-meta{width:100%}
+.ar-filters{display:grid;grid-template-columns:1fr .9fr 1fr 1.6fr auto;gap:10px;align-items:end}.ar-filters label{display:grid;gap:6px;font-size:10px;font-weight:700;color:#64748b}.ar-filters select,.ar-filters input{width:100%;min-width:0}.ar-filters button{height:38px}.ar-filter-panel{margin-top:14px}
+.office-summary{display:flex;align-items:center;gap:26px;flex-wrap:wrap;margin-top:14px;padding:12px 14px;border-radius:10px;background:#EFF7F3;border:1px solid #D7ECE3}.office-name{font:800 14px Manrope;color:#183B56;min-width:140px}.office-stat small{display:block;font-size:9px;letter-spacing:.6px;font-weight:700;color:#6b7c99;text-transform:uppercase;margin-bottom:3px}.office-stat b{font:800 16px Manrope;color:#183B56}.claims-table td .muted-cell{display:block}
+@media(max-width:1000px){.ar-filters{grid-template-columns:repeat(2,minmax(0,1fr))}.ar-filters .ar-search{grid-column:1/-1}.ar-filters button{grid-column:1/-1}}
+
+
+/* TeamTrack official brand theme: Navy + Emerald + Teal + Soft White */
+:root {
+  color-scheme: light;
+  --navy: #183B56;
+  --emerald: #087F5B;
+  --teal: #2A9D8F;
+  --soft-white: #F5FAF7;
+}
+body { background: var(--soft-white); color: var(--navy); }
+.sidebar { background: var(--navy); border-right-color: #244F68; }
+.sidebar .brand, .sidebar .workspace-label { color: #F5FAF7; }
+.sidebar .brand small { color: #B8D6CC; }
+.sidebar .nav-link { color: #D6E7E1; }
+.sidebar .nav-link.active, .sidebar .nav-link:hover {
+  background: var(--emerald); color: #FFFFFF;
+}
+.brand-mark { background: var(--emerald); }
+.welcome { background: linear-gradient(115deg, var(--navy), var(--emerald)); }
+.primary-button { background: var(--emerald); color: #FFFFFF; }
+.primary-button:hover { background: #066B4D; }
+.text-button, .claims-table .claim-id, .today-claims-table .claim-ref { color: var(--emerald); }
+.progress span { background: var(--teal); }
+.task-check { accent-color: var(--emerald); }
+.nav-link:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible {
+  outline: 3px solid #78C9B4; outline-offset: 2px;
+}
+
+
+/* ==========================================================
+   TeamTrack shared design system
+   Navy #183B56 · Emerald #087F5B · Teal #2A9D8F · Soft White #F5FAF7
+   Shared by Overview, Attendance, Tasks, AR Claims, Claim View,
+   HR & Support Tickets, and Team Performance.
+   ========================================================== */
+:root {
+  --tt-navy: #183B56;
+  --tt-emerald: #087F5B;
+  --tt-teal: #2A9D8F;
+  --tt-soft-white: #F5FAF7;
+  --tt-white: #FFFFFF;
+  --tt-border: #E2ECE6;
+  --tt-muted: #718096;
+  --tt-emerald-soft: #E4F3EC;
+  --tt-teal-soft: #E3F3F0;
+}
+html { background: var(--tt-soft-white); }
+body { background: var(--tt-soft-white); color: var(--tt-navy); }
+.app-shell { background: var(--tt-soft-white); }
+.sidebar {
+  background: var(--tt-navy);
+  border-right: 1px solid #244F68;
+  color: #F5FAF7;
+}
+.sidebar .brand { color: #FFFFFF; }
+.sidebar .brand small, .sidebar .workspace-label { color: #B8D6CC; }
+.sidebar .nav-link { color: #D6E7E1; }
+.sidebar .nav-link.active, .sidebar .nav-link:hover {
+  background: var(--tt-emerald);
+  color: #FFFFFF;
+}
+.sidebar .nav-link:focus-visible { outline-color: #78C9B4; }
+.sidebar .profile { color: #FFFFFF; }
+.sidebar .profile small { color: #C4DAD2; }
+.sidebar .avatar { background: #E4F3EC; color: var(--tt-emerald); }
+.brand-mark { background: var(--tt-emerald); color: #FFFFFF; }
+.main { background: transparent; }
+.topbar h1, .panel-heading h3, .section-intro h2,
+.section-intro h3, .stat-card strong { color: var(--tt-navy); }
+.topbar .role-label, .eyebrow, .workspace-label { color: var(--tt-muted); }
+.top-actions select, select, input, textarea {
+  border-color: var(--tt-border);
+  color: var(--tt-navy);
+  background-color: #FFFFFF;
+}
+.top-actions select:focus, select:focus, input:focus, textarea:focus {
+  border-color: var(--tt-teal);
+  outline-color: #78C9B4;
+}
+.welcome {
+  background: linear-gradient(115deg, var(--tt-navy) 0%, var(--tt-emerald) 100%);
+  color: #FFFFFF;
+}
+.welcome .eyebrow.light { color: #D4E9E1; }
+.welcome p:not(.eyebrow) { color: #E0EEE9; }
+.date-pill { color: #FFFFFF; }
+.stat-card, .panel, .ticket-card, .claim-card, .task-card {
+  background: var(--tt-white);
+  border-color: var(--tt-border);
+}
+.primary-button, .claim-open, .claim-view-btn, .filter-apply {
+  background: var(--tt-emerald);
+  border-color: var(--tt-emerald);
+  color: #FFFFFF;
+}
+.primary-button:hover, .claim-open:hover, .claim-view-btn:hover,
+.filter-apply:hover { background: #066B4D; }
+.secondary-button {
+  color: var(--tt-navy);
+  background: #FFFFFF;
+  border-color: #B9CDC5;
+}
+.secondary-button:hover { background: var(--tt-emerald-soft); }
+.text-button, .claim-id, .claim-ref, .ticket-link { color: var(--tt-emerald); }
+.progress { background: #E5EEE9; }
+.progress span, .progress-bar span, .progress-fill { background: var(--tt-teal); }
+.task-check, input[type="checkbox"], input[type="radio"] {
+  accent-color: var(--tt-emerald);
+}
+.stat-icon.green, .stat-icon.blue, .done {
+  background: var(--tt-emerald-soft);
+  color: var(--tt-emerald);
+}
+.progressing {
+  background: var(--tt-teal-soft);
+  color: #19796F;
+}
+.status-chip, .count-pill { border: 1px solid transparent; }
+.table-wrap, .table-container { border-color: var(--tt-border); }
+table th {
+  background: #EDF5F1;
+  color: var(--tt-navy);
+}
+table td { border-color: #EDF2EF; }
+tr:hover td { background: #F8FBF9; }
+.ticket-message, .ticket-thread, .timeline-item,
+.history-item { border-color: var(--tt-border); }
+.ticket-message.own, .message.own {
+  background: #EAF5F0;
+  border-color: #CFE7DB;
+}
+.ticket-message.other, .message.other { background: #F5FAF7; }
+.tab-button.active, .filter-chip.active, .segmented-control .active {
+  color: var(--tt-emerald);
+  border-color: var(--tt-emerald);
+  background: var(--tt-emerald-soft);
+}
+button:focus-visible, a:focus-visible, select:focus-visible,
+input:focus-visible, textarea:focus-visible {
+  outline: 3px solid #78C9B4;
+  outline-offset: 2px;
+}
+.demo-note { background: #F2F7F3; border-color: #DCEAE2; color: var(--tt-navy); }
+.demo-note span { color: #5E756C; }
+
+/* Shared attendance actions and confirmation dialog */
+.clock-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.clock-actions button{min-height:42px}
+#clock-in,#attendance-clock-in{background:#087F5B;color:#fff;border:1px solid #087F5B}
+#clock-out,#attendance-clock-out{background:#183B56;color:#fff;border:1px solid #183B56}
+#clock-lunch,#attendance-lunch{background:#E7A33E!important;color:#fff!important;border:1px solid #E7A33E!important}
+#attendance-tea{background:#2A9D8F!important;color:#fff!important;border:1px solid #2A9D8F!important}
+#clock-lunch{display:block;width:100%;min-height:40px;margin-top:9px;border-radius:8px;font:700 11px 'DM Sans',sans-serif;cursor:pointer}
+#clock-lunch.break-active,#attendance-lunch:not(:disabled):hover{background:#BA751C!important}
+#clock-in:disabled,#clock-out:disabled,#clock-lunch:disabled,.attendance-controls button:disabled{opacity:.42!important;cursor:not-allowed!important}
+#attendance-confirm-modal[hidden]{display:none!important}
+.attendance-confirm-dialog{border-top:5px solid #087F5B;max-width:410px}
+.attendance-confirm-dialog .modal-sub{font-size:13px;line-height:1.65;margin:15px 0 22px}
+.attendance-confirm-dialog .modal-actions button{min-height:43px;font-size:12px}
+
+/* Persistent employee workspace navigation in every view */
+.topbar{position:sticky;top:0;z-index:100;background:#F5FAF7;padding:12px 0;margin-top:-12px;gap:14px}
+.header-menu-wrap{position:relative;flex-shrink:0}
+.header-menu-toggle{display:flex;align-items:center;gap:9px;border:1px solid #c7ded4;background:#183B56;color:#fff;border-radius:10px;padding:11px 15px;font:700 12px 'DM Sans',sans-serif;cursor:pointer}
+.header-menu-toggle:hover,.header-menu-toggle[aria-expanded="true"]{background:#087F5B}
+.header-menu{position:absolute;top:calc(100% + 9px);left:0;width:260px;max-width:calc(100vw - 28px);padding:16px 12px;background:#183B56;border:1px solid #2b536a;border-radius:13px;box-shadow:0 16px 38px #102b3c40;display:grid;gap:5px;z-index:110}
+.header-menu[hidden]{display:none}
+.header-menu-caption{font-size:10px;font-weight:800;letter-spacing:1.5px;color:#9ed9d1;padding:4px 12px 10px}
+.header-menu .nav-link{width:100%;color:#e3f1ec;text-align:left;border:0;background:transparent;border-radius:9px;padding:13px 12px;display:flex;align-items:center;gap:12px;font:700 13px 'DM Sans',sans-serif;cursor:pointer}
+.header-menu .nav-link:hover,.header-menu .nav-link.active{background:#087F5B;color:#fff}
+@media(max-width:650px){.topbar{flex-wrap:wrap;top:0;padding:10px 0}.header-menu-wrap{order:0}.topbar>div:nth-child(2){flex:1;min-width:110px}.top-actions{order:2}.header-menu{width:245px}.header-menu-toggle{padding:10px 12px}}
+
+/* Employee version: permanent horizontal header tabs, no sidebar */
+.app-shell{display:block;min-height:100vh}
+.sidebar{display:none!important}
+.main{width:100%;max-width:none;margin:0 auto;padding:0 30px 24px}
+.employee-header-shell{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid #dce9e5;margin:0 -30px 22px;padding:12px 30px 0;box-shadow:0 2px 12px rgba(24,59,86,.04)}
+.employee-header-shell .topbar{margin:0 0 9px;gap:18px;align-items:center;flex-wrap:wrap}
+.header-brand{display:inline-flex;align-items:center;gap:9px;text-decoration:none;color:#183B56;font:800 17px Manrope,'DM Sans',sans-serif;white-space:nowrap}
+.header-brand .brand-mark{width:30px;height:30px;border-radius:8px;background:#087F5B;font-size:17px}
+.header-page-title{flex:1;min-width:120px}
+.header-page-title h1{font-size:17px;margin:2px 0 0;color:#183B56}
+.header-page-title .eyebrow{font-size:9px;color:#6c8993}
+.header-employee{font-size:11px;font-weight:700;color:#183B56;white-space:nowrap}
+.employee-tabs{display:flex;align-items:center;gap:5px;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:#c8dad6 transparent;padding:0 0 7px}
+.employee-tabs .nav-link{flex:0 0 auto;white-space:nowrap;display:inline-flex;align-items:center;gap:9px;padding:11px 13px;border:0;border-radius:10px;color:#365678;background:transparent;font:600 12px 'DM Sans',sans-serif;cursor:pointer}
+.employee-tabs .nav-link.active{background:#eaf0ff;color:#285be7}
+.employee-tabs .nav-link:hover:not(.active){background:#eef7f4;color:#087F5B}
+.employee-tabs .nav-link:focus-visible{outline:2px solid #2A9D8F;outline-offset:1px}
+@media(max-width:900px){.main{padding:0 18px 22px}.employee-header-shell{margin:0 -18px 18px;padding:10px 18px 0}}
+@media(max-width:650px){.main{padding:0 13px 20px}.employee-header-shell{margin:0 -13px 16px;padding:10px 13px 0}.employee-header-shell .topbar{align-items:center;gap:9px}.header-brand{font-size:14px}.header-page-title{min-width:75px}.header-page-title h1{font-size:14px}.header-employee{display:none}.employee-tabs .nav-link{font-size:11px;padding:10px 11px}.top-actions{order:initial}.employee-header-shell .topbar .top-actions select{max-width:110px}}
+
+/* Single header row: employee pages are part of header, not a second navigation bar */
+.employee-header-shell{padding-top:9px;padding-bottom:9px}
+.employee-header-shell .topbar{display:flex;flex-wrap:nowrap;gap:13px;margin:0;min-width:0}
+.header-brand{flex:0 0 auto}
+.header-pages{display:flex;align-items:center;gap:2px;flex:1 1 auto;min-width:0;overflow-x:auto;scrollbar-width:thin;white-space:nowrap;padding:1px 0}
+.header-pages .nav-link{display:inline-flex;align-items:center;gap:6px;flex:0 0 auto;white-space:nowrap;border:0;background:transparent;color:#365678;padding:10px 11px;border-radius:9px;font:600 11px 'DM Sans',sans-serif;cursor:pointer}
+.header-pages .nav-link.active{background:#eaf0ff;color:#285be7}
+.header-pages .nav-link:hover:not(.active){background:#eef7f4;color:#087F5B}
+.header-pages .nav-link:focus-visible{outline:2px solid #2A9D8F;outline-offset:1px}
+.employee-header-shell .top-actions{flex:0 0 auto}
+@media(max-width:900px){.employee-header-shell .topbar{gap:7px}.header-pages .nav-link{padding:9px 8px;font-size:10px}.header-employee{display:none}}
+@media(max-width:650px){.employee-header-shell .topbar{flex-wrap:nowrap;align-items:center}.header-brand{font-size:0;gap:0}.header-brand .brand-mark{font-size:17px}.header-pages{flex:1 1 auto}.employee-header-shell .top-actions{gap:4px}.employee-header-shell .top-actions .role-label,.employee-header-shell .top-actions select{display:none}.header-pages .nav-link{padding:9px 8px}}
+
+
+/* Leave management — employee header and reviewer screens */
+.leave-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:12px 0 18px}.leave-heading h2{font:800 24px Manrope,sans-serif;margin:6px 0}.leave-heading p{font-size:12px;color:#627589;margin:4px 0}.leave-demo-tag{background:#eaf4f0;color:#087F5B;padding:9px 12px;border-radius:20px;font-size:11px;font-weight:700}.leave-steps{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:17px}.leave-steps span{background:white;border:1px solid #d9e9e1;border-radius:9px;padding:11px 13px;color:#183B56;font-size:11px;font-weight:700}.leave-layout{display:grid;grid-template-columns:minmax(280px,0.85fr) minmax(340px,1.15fr);gap:16px}.leave-date-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.leave-date-grid>div{display:grid;gap:8px}.leave-help{color:#718396;font-size:11px;line-height:1.6}.leave-request{border:1px solid #deebe5;border-radius:12px;padding:15px;margin-bottom:12px;background:#fbfefd}.leave-request-top{display:flex;align-items:center;justify-content:space-between;gap:8px}.leave-request strong{color:#183B56;font-size:13px}.leave-request p{font-size:12px;line-height:1.6;color:#526477;margin:8px 0}.leave-status{border-radius:20px;padding:6px 9px;font-size:10px;font-weight:700;background:#fff4d9;color:#956514;white-space:nowrap}.leave-status.approved{background:#e2f4e9;color:#087F5B}.leave-status.lead_rejected,.leave-status.hr_rejected{background:#ffebea;color:#ad3f3f}.leave-status.hr_pending{background:#e9efff;color:#355db0}.leave-history{margin-top:10px;border-top:1px solid #e5eee9;padding-top:8px}.leave-history-line{font-size:11px;color:#516a7a;padding:6px 0}.leave-history-line small{color:#8b9aa5;margin-left:5px}.leave-history-line p{margin:4px 0 0}.leave-review-layout{display:grid;gap:16px}.leave-review-controls{display:grid;gap:9px;margin-top:12px}.leave-review-controls label{font-size:11px;font-weight:700}.leave-review-controls textarea{width:100%}.leave-review-buttons{display:flex;gap:8px}.leave-review-buttons button{flex:1}.leave-review-layout .panel[hidden],.leave-layout article[hidden]{display:none!important}@media(max-width:850px){.leave-layout{grid-template-columns:1fr}}@media(max-width:550px){.leave-heading{align-items:flex-start;flex-direction:column}.leave-date-grid{grid-template-columns:1fr}.leave-request-top{align-items:flex-start;flex-direction:column}}
+
+/* Leave Request integrated into Attendance */
+.attendance-leave-section{margin-top:24px;padding-top:20px;border-top:1px solid #d9e9e1}
+.activity-extra{display:grid;gap:9px;padding:14px;border:1px solid #d9e9e1;border-radius:12px;background:#f5faf7;margin:10px 0}
+.activity-extra[hidden],.activity-extra div[hidden]{display:none!important}
+.activity-extra label{font-weight:700;color:#183B56}
+.activity-extra input,.activity-extra select{width:100%;max-width:100%}
+.activity-privacy{font-size:11px;color:#667b89;line-height:1.5;margin:0}
+
+/* Feature upgrades */
+.notification-panel{position:absolute;right:20px;top:76px;z-index:100;width:min(420px,calc(100vw - 32px));max-height:70vh;overflow:auto;background:#fff;border:1px solid #dce5ef;border-radius:16px;padding:18px;box-shadow:0 16px 40px #1c31502b}.notification-panel[hidden]{display:none}.feature-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}.feature-heading h3{margin:0}.feature-heading p{margin:4px 0;color:#667085}.notification-items{display:grid;gap:8px}.notification-item{width:100%;text-align:left;background:#fff;border:1px solid #e6ebf2;border-radius:10px;padding:12px;cursor:pointer;display:flex;justify-content:space-between}.notification-item.unread{background:#edf5ff;border-color:#bcd6fb}.notification-item span span,.notification-item small{display:block;margin-top:5px;font-size:12px;color:#58677c}.unread-dot{width:9px;height:9px;border-radius:50%;background:#2563eb;flex-shrink:0}.feature-panel{margin:20px 0}.feature-metrics,.leave-balance-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:12px;margin-bottom:18px}.feature-metrics>div,.leave-balance-card{padding:16px;border-radius:12px;background:#f3f7fc;border:1px solid #e3ebf5}.feature-metrics small,.leave-balance-card small,.leave-balance-card span{display:block;color:#667085}.feature-metrics strong,.leave-balance-card strong{display:block;font-size:23px;margin:6px 0;color:#17365d}.leave-balance-card strong small{display:inline;font-size:13px}.leave-balance-card span{font-size:12px}.attendance-history-row{display:flex;justify-content:space-between;gap:12px;padding:12px;border-top:1px solid #e9eef5;flex-wrap:wrap}.calendar-toolbar{display:flex;justify-content:center;align-items:center;gap:20px;margin:20px 0}.leave-calendar{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}.calendar-weekday{text-align:center;font-weight:700;font-size:12px;color:#64748b;padding:8px 0}.calendar-day{min-height:62px;border:1px solid #e1e8f0;border-radius:8px;padding:8px;font-size:13px;overflow:hidden}.calendar-day small{display:block;font-size:10px;overflow-wrap:anywhere}.calendar-day.approved{background:#dff7e9;border-color:#8ddbb0}.calendar-day.pending{background:#fff3cf;border-color:#e9cb73}.calendar-day.rejected{background:#ffe4e4;border-color:#efaaaa}.calendar-legend{font-size:12px;color:#667085;margin-top:12px}@media(max-width:600px){.calendar-day{min-height:45px;padding:4px;font-size:11px}.calendar-day small{font-size:8px}.notification-panel{right:8px;top:70px}}
+
+/* Interactive dashboard ticket summary */
+.ticket-dashboard-link{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .15s}
+.ticket-dashboard-link:hover,.ticket-dashboard-link:focus-visible{border-color:#087F5B;box-shadow:0 4px 16px rgba(8,127,91,.13);transform:translateY(-1px)}
+.ticket-dashboard-link:focus-visible{outline:2px solid #087F5B;outline-offset:3px}
+
+/* Login integration: dashboard logout button */
+.logout-button { border:1px solid #d5dce8; background:#fff; color:#334155; padding:9px 13px; border-radius:9px; font-weight:700; cursor:pointer; white-space:nowrap; }
+.logout-button:hover { background:#eff6ff; color:#1d4ed8; }
+
+
+#easy-login-screen{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#eef4ff,#e6edf6);font-family:Arial,sans-serif;padding:20px}
+#easy-login-screen[hidden]{display:none}
+#easy-login-screen .easy-card{background:white;border-radius:20px;box-shadow:0 18px 55px #20304c22;padding:38px;width:100%;max-width:410px;color:#172b4d}
+#easy-login-screen h1{font-size:26px;line-height:1.2;margin:0 0 12px;text-align:center}
+#easy-login-screen p{color:#64748b;text-align:center;margin:0 0 26px}
+#easy-login-screen label{display:block;margin:16px 0 7px;font-weight:600;font-size:14px}
+#easy-login-screen input{box-sizing:border-box;width:100%;padding:13px;border:1px solid #cbd5e1;border-radius:9px;font-size:15px}
+#easy-login-screen button[type=submit]{width:100%;margin-top:22px;padding:13px;background:#2563eb;color:white;border:0;border-radius:9px;font-weight:700;font-size:16px;cursor:pointer}
+#easy-login-screen #easy-error{color:#b91c1c;margin:12px 0 0;min-height:18px;font-size:13px}
+#easy-login-screen .easy-logo{display:block;background:#2563eb;color:white;border-radius:14px;font-size:26px;font-weight:bold;padding:12px;width:max-content;margin:0 auto 20px}
+</style>
+</head>
+<body>
+<div id="easy-login-screen" role="main"><div class="easy-card"><span class="easy-logo">T</span><h1>Team Performance Tracker</h1><p>Sign in to access your workspace</p><form id="easy-login-form"><label for="easy-email">Email address</label><input id="easy-email" type="email" autocomplete="username" required placeholder="Enter your email"><label for="easy-password">Password</label><input id="easy-password" type="password" autocomplete="current-password" required placeholder="Enter your password"><div id="easy-error" role="alert"></div><button type="submit">Sign In →</button></form></div></div>
+  <div class="app-shell">
+<main class="main">
+      <div class="employee-header-shell">
+        <header class="topbar">
+          <span id="page-title" hidden>Overview</span><a class="header-brand" href="#" data-view="overview"><span class="brand-mark">T</span><span>TeamTrack</span></a>
+          <nav class="header-pages" aria-label="Employee workspace navigation">
+          <button type="button" class="nav-link header-nav-link active" data-view="overview">▦ <span>Overview</span></button>
+          <button type="button" class="nav-link header-nav-link" data-view="attendance">◷ <span>Attendance</span></button>
+          <button type="button" class="nav-link header-nav-link" data-view="tasks">＋ <span>Add Today Task</span></button>
+          <button type="button" class="nav-link header-nav-link" data-view="ar">▤ <span>AR claims</span></button>
+          <button type="button" class="nav-link header-nav-link" data-view="tickets">✉ <span>HR & support tickets</span></button>
+          <button type="button" class="nav-link header-nav-link" data-view="team">♙ <span>Team performance</span></button>
+        </nav>
+          <div class="top-actions"><button type="button" id="logout-button" class="logout-button">Log out</button><span class="header-employee">Ahsan Raza</span><span class="role-label">VIEW AS</span><select id="role-select" aria-label="Demo role"><option>Employee</option><option>Team Leader</option><option>HR Manager</option><option>Admin</option></select><button class="icon-button" id="notification-button" title="Notifications" aria-expanded="false" aria-controls="notification-panel">🔔 <span id="notification-count" class="notification-count">0</span></button></div>
+        </header><aside id="notification-panel" class="notification-panel" hidden><div class="feature-heading"><h3>Notification Center</h3><button type="button" class="secondary-button" id="notifications-read-all">Mark all read</button></div><div id="notification-items" class="notification-items"></div><button type="button" class="text-button" id="notifications-clear">Clear all notifications</button></aside>
+
+      </div>
+
+      <section class="view active" id="overview-view">
+        <div class="welcome"><div><p class="eyebrow light">YOUR WORKSPACE</p><h2>Good day, Ahsan <span>✦</span></h2><p>Here’s your team activity at a glance.</p></div><div class="date-pill">Thursday · 19 Nov</div></div>
+        <div class="stats-grid">
+          <article class="stat-card"><div class="stat-top"><span>Attendance status</span><span class="stat-icon green">◷</span></div><strong id="attendance-status">Not clocked in</strong><small id="attendance-sub">Start your workday</small></article>
+          <article class="stat-card"><div class="stat-top"><span>Overall activity</span><span class="stat-icon blue">✓</span></div><strong id="activity-overall">0%</strong><small>Total of today's task percentages</small></article>
+          <article class="stat-card"><div class="stat-top"><span>Tasks logged today</span><span class="stat-icon amber">≡</span></div><strong id="activity-entries">0</strong><small>Entries added in Add Today Task</small></article>
+          <article class="stat-card ticket-dashboard-link" id="dashboard-open-tickets" role="button" tabindex="0" aria-label="View my open tickets in HR and support tickets"><div class="stat-top"><span>My open tickets</span><span class="stat-icon purple">✉</span></div><strong id="ticket-count">1</strong><small>Waiting for a response</small></article>
+        </div>
+        <div class="content-grid">
+          <article class="panel">
+            <div class="panel-heading"><div><h3>Today's activity</h3><p>Your work compared with the daily targets</p></div><button class="primary-button add-activity-trigger" type="button">＋ Add task</button></div>
+            <div id="activity-overview-bars"></div>
+          </article>
+          <article class="panel attendance-panel">
+            <div class="panel-heading"><div><h3>Time & attendance</h3><p>Record your workday</p></div><span class="live-dot">● LIVE DEMO</span></div>
+            <div class="time-display" id="live-time">--:--</div><div class="time-caption">LOCAL DEVICE TIME</div>
+            <div class="clock-actions"><button class="primary-button" id="clock-in">Clock in</button><button class="secondary-button" id="clock-out" disabled>Clock Out</button></div>
+            <button class="dashboard-lunch-button" id="clock-lunch" type="button" disabled>Start Lunch Break</button><p class="helper" id="clock-message">Clock in when you start work.</p>
+          </article>
+        </div>
+        <div class="history-mount"></div>
+        <article class="panel team-panel">
+          <div class="panel-heading"><div><h3>Team snapshot</h3><p>Illustrative team performance data</p></div><button class="text-button" data-go="team">View team →</button></div>
+          <div class="team-row"><div class="member"><div class="avatar blue-avatar">AR</div><div><b>Alex R.</b><small>Billing</small></div></div><div class="progress-wrap"><div class="progress"><span style="width:90%"></span></div><small>90%</small></div><span class="status-chip done">On track</span></div>
+          <div class="team-row"><div class="member"><div class="avatar orange-avatar">JM</div><div><b>Jamie M.</b><small>AR follow-up</small></div></div><div class="progress-wrap"><div class="progress"><span style="width:72%"></span></div><small>72%</small></div><span class="status-chip pending">In progress</span></div>
+          <div class="team-row"><div class="member"><div class="avatar purple-avatar">KT</div><div><b>Kris T.</b><small>Claims</small></div></div><div class="progress-wrap"><div class="progress"><span style="width:96%"></span></div><small>96%</small></div><span class="status-chip done">On track</span></div>
+        </article>
+      </section>
+
+      <section class="view" id="attendance-view">
+        <div class="section-intro attendance-intro"><div><p class="page-note">Track your working hours and manage your breaks.</p></div><span class="status-chip progressing" id="attendance-live-status">Not clocked in</span></div>
+        <div class="attendance-workspace">
+          <article class="panel attendance-clock-card">
+            <div class="clock-ring"><strong id="attendance-elapsed">00:00:00</strong><small>TIME SINCE CLOCK-IN</small></div>
+            <div class="clock-started"><span class="live-dot">●</span> Clocked in at <b id="attendance-in-record">—</b></div>
+            <div class="attendance-controls">
+              <button class="primary-button" id="attendance-clock-in" type="button">▶ Clock In</button>
+              <button class="secondary-button lunch-button" id="attendance-lunch" type="button" disabled>🍽 Start Lunch Break</button>
+              <button class="secondary-button tea-button" id="attendance-tea" type="button" disabled>☕ Start Tea Break</button>
+              <button class="danger-button" id="attendance-clock-out" type="button" disabled>⇥ Clock Out</button>
+            </div>
+            <p class="helper" id="attendance-action-message" aria-live="polite">Clock in when you begin your workday.</p>
+          </article>
+          <article class="panel attendance-summary-card">
+            <div class="panel-heading"><div><h3>Attendance Summary</h3><p>Today's recorded time</p></div></div>
+            <div class="attendance-metric"><span>Scheduled hours</span><b>8h</b></div>
+            <div class="attendance-metric"><span>Worked so far</span><b id="attendance-worked">0h 00m</b></div>
+            <div class="attendance-metric"><span>Break time</span><b id="attendance-break-total">0m</b></div>
+            <div class="attendance-metric"><span>Clock out</span><b id="attendance-out-record">—</b></div>
+            <p class="attendance-note">Your attendance activity is saved in this browser demo.</p>
+          </article>
+        </div>
+        <article class="panel feature-panel"><div class="feature-heading"><div><h3>Attendance insights</h3><p>Recent daily records and working hours</p></div><span class="count-pill" id="attendance-days-count">0 days</span></div><div class="feature-metrics"><div><small>Days present</small><strong id="attendance-days-present">0</strong></div><div><small>Total worked</small><strong id="attendance-total-hours">0h 00m</strong></div><div><small>Average per day</small><strong id="attendance-average-hours">0h 00m</strong></div></div><div class="attendance-history" id="attendance-history"></div></article><article class="panel attendance-timeline-panel">
+          <div class="panel-heading"><div><h3>Today's Timeline</h3><p>Clock-in, breaks and clock-out activity</p></div><span class="count-pill" id="attendance-event-count">0 events</span></div>
+          <div id="attendance-timeline" class="attendance-timeline"><p class="empty-state">No attendance activity recorded yet.</p></div>
+        </article>
+        <article class="panel correction-panel"><div><b>Attendance correction request</b><p>If you forget to clock in or out, submit a correction request to your Team Leader or HR.</p></div><button class="secondary-button" id="attendance-correction" type="button">Request correction</button></article>
+      <div class="attendance-leave-section" id="leaves-view">
+        <div class="leave-heading"><div><p class="eyebrow">LEAVE MANAGEMENT</p><h2>Leave Request</h2><p>Request time off and follow the Team Lead → HR approval process.</p></div><span class="leave-demo-tag">Browser demo · No emails sent</span></div>
+        <article class="panel feature-panel"><div class="feature-heading"><div><h3>Leave balance & calendar</h3><p>Annual allowances and approved leave usage (calendar days)</p></div></div><div id="leave-balance-grid" class="leave-balance-grid"></div><div class="calendar-toolbar"><button type="button" class="secondary-button" id="leave-prev-month" aria-label="Previous month">←</button><strong id="leave-calendar-title"></strong><button type="button" class="secondary-button" id="leave-next-month" aria-label="Next month">→</button></div><div id="leave-calendar" class="leave-calendar"></div><div class="calendar-legend">🟢 Approved &nbsp; 🟡 Pending &nbsp; 🔴 Rejected</div></article><div class="leave-steps"><span>① Employee submits</span><span>② Team Lead reviews</span><span>③ HR decides</span><span>④ Employee notified</span></div>
+        <div class="leave-layout">
+          <article class="panel"><div class="panel-heading"><div><h3>Apply for leave</h3><p>Requests go to your Team Lead first.</p></div></div>
+            <form id="leave-form" class="ticket-form">
+              <label for="leave-type">Leave type</label><select id="leave-type" required><option value="Annual leave">Annual leave</option><option value="Casual leave">Casual leave</option><option value="Sick leave">Sick leave</option><option value="Emergency leave">Emergency leave</option></select>
+              <div class="leave-date-grid"><div><label for="leave-start">Start date</label><input id="leave-start" type="date" required></div><div><label for="leave-end">End date</label><input id="leave-end" type="date" required></div></div>
+              <label for="leave-reason">Reason</label><textarea id="leave-reason" rows="4" maxlength="600" placeholder="Briefly explain your request" required></textarea>
+              <p class="leave-help">Your Team Lead and HR can review this request. Avoid unnecessary personal or medical details.</p>
+              <button class="primary-button" type="submit">Submit leave request</button>
+            </form>
+          </article>
+          <article class="panel"><div class="panel-heading"><div><h3>My leave requests</h3><p>Track every stage and reviewer comment.</p></div></div><div id="leave-my-list"></div></article>
+        </div>
+        <div class="leave-review-layout">
+          <article class="panel" id="lead-leave-panel" hidden><div class="panel-heading"><div><h3>Team Lead · Leave review</h3><p>Approve to forward to HR, or reject with a reason.</p></div></div><div id="leave-lead-queue"></div></article>
+          <article class="panel" id="hr-leave-panel" hidden><div class="panel-heading"><div><h3>HR Manager · Final approval</h3><p>Only requests approved by the Team Lead appear here.</p></div></div><div id="leave-hr-queue"></div></article>
+        </div>
+        <p class="leave-help">Demo mode: requests and decisions are stored in this browser only. Real role permissions, email notifications, and multi-user approvals require a secure backend.</p>
+      </div>
+      </section>
+
+      <section class="view" id="tasks-view">
+        <div class="section-intro today-intro">
+          <div><p class="page-note">Log the work you completed today. Your activity percentage updates automatically.</p></div>
+          <button class="primary-button add-activity-trigger" type="button">＋ Add</button>
+        </div>
+        <div class="content-grid">
+          <article class="panel">
+            <div class="panel-heading"><div><h3>Today's activity</h3><p>100% = the daily target for each task</p></div></div>
+            <div id="activity-page-bars"></div>
+            <p class="helper">Daily targets (100%): 40 claims worked (counted automatically from your claim updates) · 100 insurance follow-ups · 40 insurance verifications · 40 patient audits · $50,000 payments posted. Total activity adds up every task: reaching any one target = 100%, and extra work adds more on top.</p>
+          </article>
+          <article class="panel">
+            <div class="panel-heading"><div><h3>Today's entries</h3><p>Everything you have added today</p></div><span class="count-pill" id="activity-entry-count">0 entries</span></div>
+            <div id="activity-log" class="activity-log"></div>
+          </article>
+        </div>
+        <div class="history-mount"></div>
+      </section>
+
+      <section class="view" id="tickets-view">
+        <div class="section-intro tickets-intro"><div><p class="page-note">Send a concern to the right people and continue the conversation in one shared ticket.</p></div><span class="count-pill" id="ticket-notification-summary">Shared conversations · Notifications on</span></div>
+        <div class="ticket-workspace">
+          <article class="panel ticket-create-panel"><div class="panel-heading"><div><h3>＋ Create a Support Ticket</h3><p>Select everyone who should receive this ticket.</p></div></div>
+            <form id="ticket-form" class="ticket-form">
+              <fieldset class="recipient-fieldset"><legend>Send a ticket to <span class="required-mark">*</span></legend>
+                <label class="recipient-option"><input type="checkbox" name="ticket-recipient" value="HR"> <span>HR</span></label>
+                <label class="recipient-option"><input type="checkbox" name="ticket-recipient" value="CEO"> <span>CEO</span></label>
+                <label class="recipient-option"><input type="checkbox" name="ticket-recipient" value="Team Lead"> <span>Team Lead</span></label>
+              </fieldset>
+              <p class="recipient-hint" id="recipient-hint">Choose one or more recipients. Everyone selected can read and reply.</p>
+              <label for="ticket-subject">Ticket subject <span class="required-mark">*</span></label><input id="ticket-subject" required maxlength="100" placeholder="e.g. Request for attendance correction">
+              <label for="ticket-description">Message <span class="required-mark">*</span></label><textarea id="ticket-description" required maxlength="1200" rows="6" placeholder="Describe your concern or request..."></textarea>
+              <label for="ticket-attachment">Attach file (optional)</label><input id="ticket-attachment" type="file" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx">
+              <button class="primary-button" type="submit">➤ Submit Ticket</button>
+              <p class="helper">Demo attachments are not uploaded to a server. Do not attach confidential or patient information.</p>
+            </form>
+          </article>
+          <div class="ticket-right-column">
+            <article class="panel"><div class="panel-heading"><div><h3>My Tickets</h3><p>Check status and open a conversation</p></div><span class="count-pill" id="ticket-total-count">0 tickets</span></div><div id="ticket-list" class="ticket-list"></div></article>
+            <article class="panel ticket-conversation-panel"><div class="panel-heading"><div><h3 id="ticket-conversation-title">Ticket conversation</h3><p id="ticket-conversation-subtitle">Select a ticket to view messages and reply.</p></div><span class="status-chip pending" id="ticket-conversation-status">No ticket selected</span></div>
+              <div id="ticket-conversation-meta" class="ticket-conversation-meta">Your selected recipients will share one conversation thread.</div>
+              <div id="ticket-messages" class="ticket-messages"><p class="empty-state">Select a ticket from My Tickets to view its conversation.</p></div>
+              <form id="ticket-reply-form" class="ticket-reply-form"><input id="ticket-reply-input" required maxlength="1000" placeholder="Type a reply..." disabled><button class="primary-button" id="ticket-reply-send" type="submit" disabled>➤ Send</button></form>
+              <div class="ticket-status-control"><label for="ticket-status-select">Update ticket status</label><select id="ticket-status-select" disabled><option>Open</option><option>In Progress</option><option>Resolved</option></select><span class="helper">Status changes are visible to everyone on the ticket.</span></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+
+
+      <section class="view" id="claim-view">
+        <div class="claim-detail-heading">
+          <div>
+            <button class="text-button back-to-tasks" type="button" id="claim-back-to-tasks">← Back to AR claims</button>
+            <div class="section-intro claim-title-row"><div><p class="page-note" id="detail-claim-subtitle">Review claim information, work history and next steps.</p></div><span class="status-chip pending" id="detail-claim-status">Pending</span></div>
+          </div>
+          <div class="claim-detail-actions"><button class="secondary-button" id="detail-print" type="button">Print summary</button><button class="primary-button" id="detail-focus-note" type="button">＋ Add update</button></div>
+        </div>
+        <div class="claim-detail-stats">
+          <article class="stat-card"><div class="stat-top"><span>Outstanding balance</span><span class="stat-icon purple">$</span></div><strong id="detail-balance">$0.00</strong><small>Current claim balance</small></article>
+          <article class="stat-card"><div class="stat-top"><span>Aging</span><span class="stat-icon amber">◷</span></div><strong id="detail-aging">0 days</strong><small>Since date of service</small></article>
+          <article class="stat-card"><div class="stat-top"><span>Activities logged</span><span class="stat-icon blue">≡</span></div><strong id="detail-activities">0</strong><small>Recorded claim actions</small></article>
+          <article class="stat-card"><div class="stat-top"><span>Next follow-up</span><span class="stat-icon green">↻</span></div><strong id="detail-next-followup">Not set</strong><small>Scheduled reminder</small></article>
+        </div>
+        <div class="claim-detail-layout">
+          <div class="claim-detail-main">
+            <article class="panel">
+              <div class="panel-heading"><div><h3>Claim information</h3><p>Core claim and patient reference details</p></div><span class="count-pill" id="detail-claim-id">CL-0000</span></div>
+              <div class="claim-info-grid" id="detail-info-grid"></div>
+            </article>
+            <article class="panel">
+              <div class="panel-heading"><div><h3>Claim activity timeline</h3><p>Chronological record of actions taken on this claim</p></div><span class="count-pill" id="detail-timeline-count">0 activities</span></div>
+              <div class="detail-timeline" id="detail-timeline"><p class="empty-state">No activity recorded yet.</p></div>
+            </article>
+          </div>
+          <aside class="claim-detail-side">
+            <article class="panel">
+              <div class="panel-heading"><div><h3>Quick update</h3><p>Record the work you completed. Your name is added to the history automatically.</p></div></div>
+              <form id="detail-update-form" class="ticket-form">
+                <label for="detail-action">Action performed</label>
+                <select id="detail-action"><option>Called insurance</option><option>Checked payer portal</option><option>Submitted requested documents</option><option>Reviewed claim status</option><option>Left voicemail</option><option>Sent follow-up email</option><option>Other follow-up</option></select>
+                <label for="detail-status-select">Claim status</label>
+                <select id="detail-status-select"><option>In process</option><option>Follow-up required</option><option>Pending insurance</option><option>Resolved</option><option>Denied</option></select>
+                <label for="detail-representative">Insurance representative (optional)</label>
+                <input id="detail-representative" maxlength="80" placeholder="Representative name">
+                <label for="detail-reference">Call reference number (optional)</label>
+                <input id="detail-reference" maxlength="80" placeholder="Reference / confirmation #">
+                <label for="detail-update-note">Work note</label>
+                <textarea id="detail-update-note" rows="4" maxlength="600" required placeholder="What did you do? What happened? What is the next step?"></textarea>
+                <div id="detail-followup-wrap" class="followup-wrap"><label for="detail-followup-date">Next follow-up date</label>
+                <input id="detail-followup-date" type="date"></div>
+                <button class="primary-button" type="submit">Save activity</button>
+              </form>
+            </article>
+            <article class="panel privacy-reminder"><b>Privacy reminder</b><p>Use only the minimum necessary patient information in notes. This starter app uses sample data and is not approved for real patient records.</p></article>
+          </aside>
+        </div>
+      </section>
+
+      <section class="view" id="ar-view">
+        <div class="section-intro ar-intro">
+          <div><p class="page-note">Work assigned outstanding claims, document follow-ups and review claim history.</p></div>
+          <span class="demo-flag">DEMO CLAIM DATA</span>
+        </div>
+        <article class="panel ar-filter-panel">
+          <div class="ar-filters">
+            <label>Office<select id="ar-office-filter"><option value="">All offices</option></select></label>
+            <label>Aging days<select id="ar-aging-filter"><option value="">All aging</option><option value="0-30">0–30 days</option><option value="31-60">31–60 days</option><option value="61-90">61–90 days</option><option value="91+">91+ days</option></select></label>
+            <label>Carrier<select id="ar-carrier-filter"><option value="">All carriers</option></select></label>
+            <label class="ar-search">Search patient<input id="ar-search" type="search" placeholder="Patient name or patient ID..."></label>
+            <button class="secondary-button" id="ar-reset-filters" type="button">Reset</button>
+          </div>
+          <div class="office-summary" id="office-summary"></div>
+        </article>
+        <div class="panel upload-panel">
+          <div class="panel-heading"><div><h3>Outstanding claims upload</h3><p>Import a CSV file using the sample column names. Demo only—do not upload real patient data.</p></div><span class="count-pill">CSV import</span></div>
+          <div class="upload-row">
+            <input type="file" id="claims-file" accept=".csv,text/csv">
+            <button class="secondary-button" id="download-template" type="button">Download CSV template</button>
+          </div>
+          <p class="helper" id="upload-message">Expected columns: claim_id, office, dos, patient, insurance, aging_days, last_note, balance (optional: patient_id)</p>
+        </div>
+        <div class="panel">
+          <div class="panel-heading"><div><h3 id="claims-list-title">Pending Claims</h3><p id="claims-list-subtitle"></p></div><span class="count-pill" id="pending-claims-count">0 pending</span></div>
+          <div id="claims-progress" class="claims-progress"></div>
+          <div class="table-wrap">
+            <table class="claims-table">
+              <thead><tr><th>Claim / Office</th><th>DOS</th><th>Patient</th><th>Insurance</th><th>Aging</th><th>Last note</th><th>Assigned to</th><th>Last worked by</th><th>Balance</th><th>Status</th><th>Action</th></tr></thead>
+              <tbody id="claims-table-body"></tbody>
+            </table>
+          </div>
+          <p class="helper">Click a bar to switch between Pending and Worked claims. Click “Work claim” to open a claim and add your activity.</p>
+        </div>
+        <article class="panel">
+          <div class="panel-heading"><div><h3>Claim activity history</h3><p>Audit trail for the selected claim.</p></div></div>
+          <div id="claim-history" class="claim-history"><p class="helper">Select a claim to view its activity history.</p></div>
+        </article>
+      </section>
+
+
+
+      <section class="view" id="team-view">
+        <div class="section-intro"><p class="page-note">Sample team summary. Actual visibility will be controlled by account permissions.</p></div>
+        <article class="panel"><div class="panel-heading"><div><h3>Team task completion</h3><p>Illustrative figures, not real employee metrics</p></div></div>
+          <div class="team-row"><div class="member"><div class="avatar blue-avatar">AR</div><div><b>Alex R.</b><small>Billing</small></div></div><div class="progress-wrap"><div class="progress"><span style="width:90%"></span></div><small>90%</small></div><span class="status-chip done">On track</span></div>
+          <div class="team-row"><div class="member"><div class="avatar orange-avatar">JM</div><div><b>Jamie M.</b><small>AR follow-up</small></div></div><div class="progress-wrap"><div class="progress"><span style="width:72%"></span></div><small>72%</small></div><span class="status-chip pending">In progress</span></div>
+          <div class="team-row"><div class="member"><div class="avatar purple-avatar">KT</div><div><b>Kris T.</b><small>Claims</small></div></div><div class="progress-wrap"><div class="progress"><span style="width:96%"></span></div><small>96%</small></div><span class="status-chip done">On track</span></div>
+        </article>
+      </section>
+      <footer>TeamTrack · Starter prototype · Sample data only</footer>
+    </main>
+  </div>
+  <div class="modal-backdrop" id="attendance-confirm-modal" hidden>
+    <div class="modal attendance-confirm-dialog" role="dialog" aria-modal="true" aria-labelledby="attendance-confirm-title" aria-describedby="attendance-confirm-description">
+      <div class="modal-head"><h3 id="attendance-confirm-title">Confirm attendance</h3><button type="button" class="modal-close" id="attendance-confirm-close" aria-label="Close">×</button></div>
+      <p class="modal-sub" id="attendance-confirm-description"></p>
+      <div class="modal-actions"><button type="button" class="secondary-button" id="attendance-confirm-cancel">Cancel</button><button type="button" class="primary-button" id="attendance-confirm-accept">Confirm</button></div>
+    </div>
+  </div>
+  <div class="modal-backdrop" id="activity-modal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="activity-modal-title">
+      <div class="modal-head"><h3 id="activity-modal-title">Add today task</h3><button type="button" class="modal-close" id="activity-close" aria-label="Close">×</button></div>
+      <p class="modal-sub" id="activity-modal-sub">What did you work on?</p>
+      <div class="activity-options" id="activity-options"></div>
+      <form id="activity-form" class="ticket-form" hidden>
+        <div class="activity-chosen" id="activity-chosen"></div>
+        <label for="activity-other-text" id="activity-other-label" hidden>Describe the task <span class="required-mark">*</span></label>
+        <input id="activity-other-text" maxlength="100" placeholder="Write what you worked on..." hidden>
+        <label for="activity-qty" id="activity-qty-label">Quantity</label>
+        <input id="activity-qty" type="number" min="0" step="1" required>
+        <div class="activity-extra" id="activity-verification-fields" hidden>
+          <label for="activity-office-name">Office Name <span class="required-mark">*</span></label>
+          <input id="activity-office-name" type="text" maxlength="120" autocomplete="organization" placeholder="Enter office name">
+          <label for="activity-work-date">Date of Work <span class="required-mark">*</span></label>
+          <input id="activity-work-date" type="date">
+        </div>
+        <div class="activity-extra" id="activity-payment-fields" hidden>
+          <label for="activity-payment-file">Upload payment posting file <span class="required-mark">*</span></label><input id="activity-payment-file" type="file" accept=".pdf,.csv,.xlsx,.xls,.png,.jpg,.jpeg">
+          <p class="activity-privacy">Demo: the file is selected and its name is logged, but its contents are not uploaded or saved. Do not select real patient or payment records.</p>
+        </div>
+        <label for="activity-note" id="activity-note-label">Note (optional)</label>
+        <input id="activity-note" maxlength="200" placeholder="Short note. No patient details.">
+        <div class="modal-actions"><button type="button" class="secondary-button" id="activity-back">← Back</button><button class="primary-button" type="submit">Save</button></div>
+      </form>
+    </div>
+  </div>
+  <script>const $ = (id) => document.getElementById(id);
+const timeNow = () => new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+const fullTime = value => new Date(value).toLocaleTimeString([], {hour:"2-digit",minute:"2-digit"});
+const dateKey = () => new Date().toISOString().slice(0,10);
+const readStore = (key, fallback) => { try { const value=localStorage.getItem(key); return value ? JSON.parse(value) : fallback; } catch { return fallback; } };
+const writeStore = (key, value) => { try { localStorage.setItem(key, JSON.stringify(value)); } catch { /* browser storage may be unavailable */ } };
+let attendance = readStore(`teamtrack-attendance-${dateKey()}`, {events:[], clockIn:null, clockOut:null, activeBreak:null});
+let tickets = readStore("teamtrack-tickets", [{
+  id:"TT-1024", subject:"System access issue", recipients:["HR","CEO","Team Lead"], status:"In Progress", createdAt:new Date(Date.now()-86400000).toISOString(),
+  messages:[
+    {by:"Ahsan Raza",role:"Employee",text:"I am facing an issue accessing the claims portal. Please help.",at:new Date(Date.now()-86400000).toISOString()},
+    {by:"HR Department",role:"HR",text:"We are looking into this issue. You will get an update soon.",at:new Date(Date.now()-86300000).toISOString()},
+    {by:"CEO",role:"CEO",text:"Noted. We are checking with the IT team.",at:new Date(Date.now()-86200000).toISOString()},
+    {by:"Team Lead",role:"Team Lead",text:"I have also requested IT to check this issue.",at:new Date(Date.now()-86100000).toISOString()}
+  ], unread:0
+}]);
+let selectedTicketId = tickets[0]?.id || null;
+let notificationCount = readStore("teamtrack-notifications", 0);
+
+function updateClock() {
+  const clock = $("live-time");
+  if (clock) clock.textContent = new Date().toLocaleTimeString([], {hour:"2-digit",minute:"2-digit",second:"2-digit"});
+}
+setInterval(updateClock, 1000); updateClock();
+function escapeHTML(value) {
+  return String(value ?? "").replace(/[&<>"']/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char]));
+}
+function saveAttendance(){ writeStore(`teamtrack-attendance-${dateKey()}`, attendance); }
+function attendanceDurationMs(){
+  if(!attendance.clockIn) return 0;
+  const end=attendance.clockOut ? new Date(attendance.clockOut).getTime() : Date.now();
+  let total=Math.max(0,end-new Date(attendance.clockIn).getTime());
+  attendance.events.filter(e=>e.kind==="break-start").forEach(start=>{
+    const endEvent=attendance.events.find(e=>e.kind==="break-end" && e.breakId===start.breakId);
+    const breakEnd=endEvent ? new Date(endEvent.at).getTime() : (attendance.activeBreak?.id===start.breakId ? Date.now() : new Date(start.at).getTime());
+    total-=Math.max(0,breakEnd-new Date(start.at).getTime());
+  });
+  return Math.max(0,total);
+}
+function breakDurationMs(){
+  return attendance.events.filter(e=>e.kind==="break-start").reduce((sum,start)=>{
+    const end=attendance.events.find(e=>e.kind==="break-end"&&e.breakId===start.breakId);
+    return sum+Math.max(0,(end?new Date(end.at).getTime():Date.now())-new Date(start.at).getTime());
+  },0);
+}
+function durationLabel(ms){const mins=Math.floor(ms/60000);return `${Math.floor(mins/60)}h ${String(mins%60).padStart(2,"0")}m`;}
+function renderAttendance(){
+  const active=Boolean(attendance.clockIn&&!attendance.clockOut);
+  const inProgress=Boolean(attendance.activeBreak);
+  $("attendance-in-record").textContent=attendance.clockIn?fullTime(attendance.clockIn):"—";
+  $("attendance-out-record").textContent=attendance.clockOut?fullTime(attendance.clockOut):"—";
+  $("attendance-live-status").textContent=attendance.clockOut?"Day completed":inProgress?`${attendance.activeBreak.type} break`:active?"Currently at work":"Not clocked in";
+  $("attendance-live-status").className=`status-chip ${attendance.clockOut?"done":active?"progressing":"pending"}`;
+  $("attendance-worked").textContent=durationLabel(attendanceDurationMs());
+  const breakMins=Math.floor(breakDurationMs()/60000);$("attendance-break-total").textContent=breakMins<60?`${breakMins}m`:`${Math.floor(breakMins/60)}h ${breakMins%60}m`;
+  $("attendance-elapsed").textContent=attendance.clockIn?new Date(attendanceDurationMs()).toISOString().slice(11,19):"00:00:00";
+  $("attendance-clock-in").disabled=Boolean(attendance.clockIn);
+  $("attendance-clock-out").disabled=!active;
+  $("attendance-lunch").disabled=!active||Boolean(attendance.activeBreak&&attendance.activeBreak.type!=="Lunch");
+  $("attendance-tea").disabled=!active||Boolean(attendance.activeBreak&&attendance.activeBreak.type!=="Tea");
+  $("attendance-lunch").textContent=attendance.activeBreak?.type==="Lunch"?"■ End Lunch Break":"🍽 Start Lunch Break";
+  $("attendance-tea").textContent=attendance.activeBreak?.type==="Tea"?"■ End Tea Break":"☕ Start Tea Break";
+  $("attendance-action-message").textContent=attendance.clockOut?"Your workday is complete.":attendance.activeBreak?`${attendance.activeBreak.type} break started at ${fullTime(attendance.activeBreak.startedAt)}.`:active?"You are clocked in. Record your breaks and clock out when finished.":"Clock in when you begin your workday.";
+  $("attendance-event-count").textContent=`${attendance.events.length} events`;
+  $("attendance-timeline").innerHTML=attendance.events.length?attendance.events.map(e=>`<div class="attendance-event"><span class="attendance-event-dot ${e.kind}"></span><div><b>${escapeHTML(e.label)}</b><small>${fullTime(e.at)} · ${new Date(e.at).toLocaleDateString()}</small></div><span class="attendance-event-time">${escapeHTML(e.detail||"")}</span></div>`).join(""):'<p class="empty-state">No attendance activity recorded yet.</p>';
+  $("attendance-status").textContent=attendance.clockOut?"Day completed":attendance.clockIn?"Clocked in":"Not clocked in";
+  $("attendance-sub").textContent=attendance.clockIn?`Started at ${fullTime(attendance.clockIn)}`:"Start your workday";
+  $("clock-in").disabled=Boolean(attendance.clockIn);$("clock-out").disabled=!active;
+  $("clock-lunch").disabled=!active||Boolean(attendance.activeBreak&&attendance.activeBreak.type!=="Lunch");
+  $("clock-lunch").textContent=attendance.activeBreak?.type==="Lunch"?"End Lunch Break":"Start Lunch Break";
+  $("clock-lunch").classList.toggle("break-active",attendance.activeBreak?.type==="Lunch");
+  $("clock-message").textContent=attendance.clockOut?"Your demo workday is complete.":attendance.clockIn?"You are clocked in. Remember to clock out when finished.":"Clock in when you start work.";
+}
+function addAttendanceEvent(kind,label,detail="",breakId=null){const event={kind,label,detail,breakId,at:new Date().toISOString()};attendance.events.push(event);return event;}
+let pendingAttendanceAction=null;
+let confirmationReturnFocus=null;
+function confirmAttendance(title,description,action,buttonLabel="Confirm"){
+  confirmationReturnFocus=document.activeElement;
+  pendingAttendanceAction=action;
+  $("attendance-confirm-title").textContent=title;
+  $("attendance-confirm-description").textContent=description;
+  $("attendance-confirm-accept").textContent=buttonLabel;
+  $("attendance-confirm-modal").hidden=false;
+  $("attendance-confirm-accept").focus();
+}
+function closeAttendanceConfirm(){
+  $("attendance-confirm-modal").hidden=true;
+  pendingAttendanceAction=null;
+  if(confirmationReturnFocus?.focus)confirmationReturnFocus.focus();
+}
+$("attendance-confirm-accept").addEventListener("click",()=>{
+  const action=pendingAttendanceAction;
+  closeAttendanceConfirm();
+  if(action)action();
+});
+$("attendance-confirm-cancel").addEventListener("click",closeAttendanceConfirm);
+$("attendance-confirm-close").addEventListener("click",closeAttendanceConfirm);
+$("attendance-confirm-modal").addEventListener("click",event=>{if(event.target===$("attendance-confirm-modal"))closeAttendanceConfirm();});
+document.addEventListener("keydown",event=>{
+  if($( "attendance-confirm-modal").hidden)return;
+  if(event.key==="Escape")closeAttendanceConfirm();
+  if(event.key==="Tab"){
+    const controls=Array.from($("attendance-confirm-modal").querySelectorAll("button"));
+    const first=controls[0],last=controls[controls.length-1];
+    if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}
+    else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}
+  }
+});
+function requestClockIn(){
+  if(attendance.clockIn)return;
+  confirmAttendance("Clock in","Start your workday and record your clock-in time?",()=>{
+    if(attendance.clockIn)return;
+    attendance.clockIn=new Date().toISOString();
+    addAttendanceEvent("clock-in","Clock In","Workday started");
+    saveAttendance();renderAttendance();renderAttendanceHistory();addNotification("Attendance recorded","Clocked in successfully.","Attendance");
+  },"Yes, Clock In");
+}
+function requestBreak(type){
+  if(!attendance.clockIn||attendance.clockOut)return;
+  if(attendance.activeBreak&&attendance.activeBreak.type!==type)return;
+  const ending=attendance.activeBreak?.type===type;
+  confirmAttendance(ending?`End ${type} break`:`Start ${type} break`,ending?`End your ${type.toLowerCase()} break and resume working?`:`Start your ${type.toLowerCase()} break now?`,()=>{
+    if(!attendance.clockIn||attendance.clockOut)return;
+    if(ending){
+      if(attendance.activeBreak?.type!==type)return;
+      const b=attendance.activeBreak;
+      addAttendanceEvent("break-end",`End ${type} Break`,"Break ended",b.id);
+      attendance.activeBreak=null;
+    }else{
+      if(attendance.activeBreak)return;
+      const id=`BR-${Date.now()}`;
+      attendance.activeBreak={id,type,startedAt:new Date().toISOString()};
+      addAttendanceEvent("break-start",`Start ${type} Break`,"Break started",id);
+    }
+    saveAttendance();renderAttendance();
+  },ending?`End ${type} Break`:`Start ${type} Break`);
+}
+function requestClockOut(){
+  if(!attendance.clockIn||attendance.clockOut)return;
+  confirmAttendance("Clock out",attendance.activeBreak?"Finish your workday? Your active break will also end.":"Finish your workday and record your clock-out time?",()=>{
+    if(!attendance.clockIn||attendance.clockOut)return;
+    if(attendance.activeBreak){
+      const b=attendance.activeBreak;
+      addAttendanceEvent("break-end",`End ${b.type} Break`,"Automatically ended at clock-out",b.id);
+      attendance.activeBreak=null;
+    }
+    attendance.clockOut=new Date().toISOString();
+    addAttendanceEvent("clock-out","Clock Out","Workday completed");
+    saveAttendance();renderAttendance();renderAttendanceHistory();addNotification("Attendance recorded","Clocked out successfully.","Attendance");
+  },"Yes, Clock Out");
+}
+$("clock-in").addEventListener("click",requestClockIn);
+$("attendance-clock-in").addEventListener("click",requestClockIn);
+$("clock-out").addEventListener("click",requestClockOut);
+$("attendance-clock-out").addEventListener("click",requestClockOut);
+$("clock-lunch").addEventListener("click",()=>requestBreak("Lunch"));
+$("attendance-lunch").addEventListener("click",()=>requestBreak("Lunch"));
+$("attendance-tea").addEventListener("click",()=>requestBreak("Tea"));
+$("attendance-correction").addEventListener("click",()=>{showView("tickets");document.querySelectorAll('input[name="ticket-recipient"]').forEach(x=>x.checked=["HR","Team Lead"].includes(x.value));$("ticket-subject").value="Attendance correction request";$("ticket-description").value="Please review my attendance record for this date. I need to request an attendance correction.";$("ticket-subject").focus();});
+setInterval(()=>{if(attendance.clockIn&&!attendance.clockOut)renderAttendance();},1000);
+
+function actorForRole(){const role=$("role-select").value;return role==="HR Manager"?{by:"HR Department",role:"HR"}:role==="Admin"?{by:"CEO",role:"CEO"}:role==="Team Leader"?{by:"Team Lead",role:"Team Lead"}:{by:"Ahsan Raza",role:"Employee"};}
+let notifications=readStore("teamtrack-notification-center-v1",[]);
+function addNotification(title,message,category="general"){
+ notifications.unshift({id:`NT-${Date.now()}-${Math.random().toString(36).slice(2,7)}`,title,message,category,at:new Date().toISOString(),read:false});
+ notifications=notifications.slice(0,100);writeStore("teamtrack-notification-center-v1",notifications);renderNotifications();
+}
+function renderNotifications(){
+ const unread=notifications.filter(n=>!n.read).length;
+ $("notification-count").textContent=unread;$("notification-count").style.display=unread?"inline-flex":"none";
+ $("notification-items").innerHTML=notifications.length?notifications.map(n=>`<button type="button" class="notification-item ${n.read?'':'unread'}" data-notification-id="${escapeHTML(n.id)}"><span><b>${escapeHTML(n.title)}</b><small>${new Date(n.at).toLocaleString()} · ${escapeHTML(n.category)}</small><span>${escapeHTML(n.message)}</span></span>${n.read?'':'<i class="unread-dot"></i>'}</button>`).join(""):'<p class="empty-state">You are all caught up.</p>';
+}
+$("notification-button").addEventListener("click",()=>{const panel=$("notification-panel");panel.hidden=!panel.hidden;$("notification-button").setAttribute("aria-expanded",String(!panel.hidden));});
+$("notification-items").addEventListener("click",e=>{const b=e.target.closest("[data-notification-id]");if(!b)return;const n=notifications.find(x=>x.id===b.dataset.notificationId);if(n){n.read=true;writeStore("teamtrack-notification-center-v1",notifications);renderNotifications();}});
+$("notifications-read-all").addEventListener("click",()=>{notifications.forEach(n=>n.read=true);writeStore("teamtrack-notification-center-v1",notifications);renderNotifications();});
+$("notifications-clear").addEventListener("click",()=>{notifications=[];writeStore("teamtrack-notification-center-v1",notifications);renderNotifications();});
+function ticketStatusClass(status){return status==="Resolved"?"done":status==="In Progress"?"progressing":"pending";}
+function renderTickets(){
+  $("ticket-list").innerHTML=tickets.length?tickets.map(t=>`<button type="button" class="ticket-list-item ${t.id===selectedTicketId?"selected":""}" data-ticket-id="${escapeHTML(t.id)}"><span class="ticket-list-top"><b>${escapeHTML(t.id)}</b><span class="status-chip ${ticketStatusClass(t.status)}">${escapeHTML(t.status)}</span></span><strong>${escapeHTML(t.subject)}</strong><small>To: ${escapeHTML(t.recipients.join(", "))}</small><small>${t.messages.length} messages · ${new Date(t.createdAt).toLocaleDateString()}</small></button>`).join(""):'<p class="helper">You have not submitted any tickets yet.</p>';
+  $("ticket-count").textContent=tickets.filter(t=>t.status!=="Resolved").length;$("ticket-total-count").textContent=`${tickets.length} ticket${tickets.length===1?"":"s"}`;
+  $("ticket-list").querySelectorAll("[data-ticket-id]").forEach(button=>button.addEventListener("click",()=>{selectedTicketId=button.dataset.ticketId;renderTickets();renderTicketConversation();}));
+  renderTicketConversation();
+}
+function renderTicketConversation(){
+  const ticket=tickets.find(t=>t.id===selectedTicketId);const enabled=Boolean(ticket);
+  $("ticket-reply-input").disabled=!enabled;$("ticket-reply-send").disabled=!enabled;$("ticket-status-select").disabled=!enabled;
+  if(!ticket){$("ticket-conversation-title").textContent="Ticket conversation";$("ticket-conversation-subtitle").textContent="Select a ticket to view messages and reply.";$("ticket-conversation-status").textContent="No ticket selected";$("ticket-conversation-meta").textContent="Your selected recipients will share one conversation thread.";$("ticket-messages").innerHTML='<p class="empty-state">Select a ticket from My Tickets to view its conversation.</p>';return;}
+  $("ticket-conversation-title").textContent=`Ticket conversation · ${ticket.id}`;$("ticket-conversation-subtitle").textContent=ticket.subject;$("ticket-conversation-status").textContent=ticket.status;$("ticket-conversation-status").className=`status-chip ${ticketStatusClass(ticket.status)}`;$("ticket-conversation-meta").textContent=`Submitted ${new Date(ticket.createdAt).toLocaleString()} · Shared with ${ticket.recipients.join(", ")}`;$("ticket-status-select").value=ticket.status;
+  $("ticket-messages").innerHTML=ticket.messages.map(message=>`<div class="ticket-message ${message.role==="Employee"?"own-message":""}"><div class="ticket-message-avatar">${escapeHTML(message.by.split(" ").map(w=>w[0]).join("").slice(0,2))}</div><div class="ticket-message-body"><div class="ticket-message-heading"><b>${escapeHTML(message.by)}</b><small>${new Date(message.at).toLocaleString()}</small></div><p>${escapeHTML(message.text)}</p></div></div>`).join("");
+  $("ticket-messages").scrollTop=$("ticket-messages").scrollHeight;
+}
+$("ticket-form").addEventListener("submit",event=>{
+  event.preventDefault();const recipients=[...document.querySelectorAll('input[name="ticket-recipient"]:checked')].map(input=>input.value);const subject=$("ticket-subject").value.trim();const description=$("ticket-description").value.trim();
+  if(!recipients.length){alert("Select at least one recipient: HR, CEO or Team Lead.");return;}if(!subject||!description)return;
+  const actor=actorForRole();const id=`TT-${1025+tickets.length}`;tickets.unshift({id,subject,recipients,status:"Open",createdAt:new Date().toISOString(),messages:[{by:actor.by,role:actor.role,text:description,at:new Date().toISOString()}],unread:0});selectedTicketId=id;writeStore("teamtrack-tickets",tickets);$("ticket-form").reset();renderTickets();addNotification("Ticket created",`${id}: ${subject}`,"Tickets");
+  alert(`Ticket ${id} created. In this demo, selected recipients are shown on the shared ticket. Real email/push notifications require a connected backend.`);
+});
+$("ticket-reply-form").addEventListener("submit",event=>{
+  event.preventDefault();const ticket=tickets.find(t=>t.id===selectedTicketId);const text=$("ticket-reply-input").value.trim();if(!ticket||!text)return;const actor=actorForRole();ticket.messages.push({by:actor.by,role:actor.role,text,at:new Date().toISOString()});ticket.unread=(ticket.unread||0)+ticket.recipients.length;addNotification("Ticket updated",`New reply on ${ticket.id}: ${ticket.subject}`,"Tickets");$("ticket-reply-input").value="";writeStore("teamtrack-tickets",tickets);renderTickets();renderNotifications();
+});
+$("ticket-status-select").addEventListener("change",event=>{const ticket=tickets.find(t=>t.id===selectedTicketId);if(!ticket)return;ticket.status=event.target.value;const actor=actorForRole();ticket.messages.push({by:actor.by,role:actor.role,text:`Ticket status changed to ${ticket.status}.`,at:new Date().toISOString()});addNotification("Ticket status changed",`${ticket.id} is now ${ticket.status}`,"Tickets");writeStore("teamtrack-tickets",tickets);renderTickets();renderNotifications();});
+
+function showView(name) {
+  document.querySelectorAll(".view").forEach(view => view.classList.toggle("active", view.id === `${name}-view`));
+  document.querySelectorAll(".nav-link").forEach(link => link.classList.toggle("active", link.dataset.view === name));
+  const titles = {overview:"Overview",attendance:"Attendance",tasks:"Add Today Task",claim:"View claim",ar:"AR claims",tickets:"HR & support tickets",team:"Team performance",leaves:"Leave Request"};
+  $("page-title").textContent=titles[name]||"Overview";
+  if(name==="attendance"){renderAttendance();renderAttendanceHistory();renderLeaves();}if(name==="tickets"){renderTickets();renderNotifications();}
+}
+// Keep the dashboard open-ticket summary connected to the My Tickets list.
+function openDashboardTickets(){
+  const firstOpen = tickets.find(ticket => ticket.status !== "Resolved");
+  selectedTicketId = firstOpen?.id || tickets[0]?.id || null;
+  showView("tickets");
+  $("ticket-list").querySelector(".ticket-list-item.selected")?.scrollIntoView({block:"nearest"});
+  $("ticket-list").closest(".panel")?.scrollIntoView({behavior:"smooth",block:"start"});
+}
+$("dashboard-open-tickets").addEventListener("click",openDashboardTickets);
+$("dashboard-open-tickets").addEventListener("keydown",event=>{
+  if(event.key==="Enter"||event.key===" "){event.preventDefault();openDashboardTickets();}
+});
+document.querySelectorAll(".nav-link").forEach(link=>link.addEventListener("click",()=>showView(link.dataset.view)));
+document.querySelectorAll("[data-go]").forEach(button=>button.addEventListener("click",()=>showView(button.dataset.go)));
+$("role-select").addEventListener("change",event=>{const role=event.target.value;renderLeaves();if(role==="Employee")alert("Employee demo view: Ahsan Raza's personal work and ticket conversations.");else alert(`${role} preview selected. This role switch is a UI demo; secure access controls require a backend.`);});
+renderTickets();renderAttendance();renderNotifications();
+
+// ---------------- AR claims demo module ----------------
+const arEmployees = ["Alex R.", "Jamie M.", "Kris T.", "Ahsan Raza"];
+let claims = [
+  {id:"CL-1001",office:"North Clinic",dos:"2026-09-15",patient:"Demo Patient A",patientId:"PT-5001",insurance:"Delta Dental",aging:65,lastNote:"Claim status requested",assignee:"Alex R.",balance:450,status:"Pending insurance",history:[{at:"2026-11-19 09:15",by:"Alex R.",action:"Reviewed claim status",status:"Pending insurance",note:"Claim status requested from payer."}]},
+  {id:"CL-1002",office:"Central Clinic",dos:"2026-10-02",patient:"Demo Patient B",patientId:"PT-5002",insurance:"MetLife",aging:48,lastNote:"Payment posted",assignee:"Jamie M.",balance:0,status:"Resolved",history:[{at:"2026-11-19 10:30",by:"Jamie M.",action:"Reviewed claim status",status:"Resolved",note:"Payment posted and claim closed."}]},
+  {id:"CL-1003",office:"West Clinic",dos:"2026-08-22",patient:"Demo Patient C",patientId:"PT-5003",insurance:"Aetna",aging:89,lastNote:"No response from payer",assignee:"",balance:725,status:"Follow-up required",history:[]},
+  {id:"CL-1004",office:"North Clinic",dos:"2026-09-30",patient:"Demo Patient D",patientId:"PT-5004",insurance:"Cigna",aging:50,lastNote:"Need EOB",assignee:"Kris T.",balance:310,status:"Pending insurance",history:[]},
+  {id:"CL-1005",office:"East Clinic",dos:"2026-10-11",patient:"Demo Patient E",patientId:"PT-5005",insurance:"Guardian",aging:39,lastNote:"Portal review needed",assignee:"",balance:185,status:"In process",history:[]},
+  {id:"CL-1006",office:"Central Clinic",dos:"2026-07-18",patient:"Demo Patient F",patientId:"PT-5006",insurance:"United Concordia",aging:124,lastNote:"Appeal documents needed",assignee:"Jamie M.",balance:980,status:"Follow-up required",history:[]}
+];
+let selectedClaimId = null;
+const currency = amount => "$" + Number(amount).toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});
+const safeText = value => escapeHTML(String(value ?? ""));
+const statusClass = status => status === "Resolved" ? "done" : status === "In process" ? "progressing" : "pending";
+
+// A claim is "worked" as soon as anyone adds an activity (or it is Resolved). Until then it is "pending".
+const isWorked = c => c.status === "Resolved" || c.history.some(h => h.status !== "Assignment");
+const lastWorkedBy = c => (c.history.find(h => h.status !== "Assignment") || {}).by || "—";
+let claimsView = "pending"; // which list is shown: "pending" or "worked"
+let claimFilters = {office:"", aging:"", carrier:"", search:""};
+const sumBalance = list => list.reduce((s,c) => s + Number(c.balance || 0), 0);
+function getFilteredClaims() {
+  const f = claimFilters, q = f.search.toLowerCase();
+  return claims.filter(c => {
+    if (f.office && c.office !== f.office) return false;
+    if (f.carrier && c.insurance !== f.carrier) return false;
+    if (f.aging === "0-30" && !(c.aging <= 30)) return false;
+    if (f.aging === "31-60" && !(c.aging >= 31 && c.aging <= 60)) return false;
+    if (f.aging === "61-90" && !(c.aging >= 61 && c.aging <= 90)) return false;
+    if (f.aging === "91+" && !(c.aging >= 91)) return false;
+    if (q && !`${c.patient} ${c.patientId || ""} ${c.id}`.toLowerCase().includes(q)) return false;
+    return true;
+  });
+}
+function populateClaimFilters() {
+  const fill = (id, values, all) => { const s = $(id), keep = s.value; s.innerHTML = `<option value="">${all}</option>` + values.map(v => `<option value="${safeText(v)}">${safeText(v)}</option>`).join(""); s.value = keep; };
+  fill("ar-office-filter", [...new Set(claims.map(c => c.office).filter(Boolean))].sort(), "All offices");
+  fill("ar-carrier-filter", [...new Set(claims.map(c => c.insurance).filter(Boolean))].sort(), "All carriers");
+}
+function renderClaims() {
+  populateClaimFilters();
+  const body = $("claims-table-body");
+  const filtered = getFilteredClaims();
+  const worked = filtered.filter(isWorked), pending = filtered.filter(c => !isWorked(c));
+  const total = filtered.length, list = claimsView === "worked" ? worked : pending;
+  // Summary under the office filter: the selected office's total claims and total balance.
+  $("office-summary").innerHTML = `<div class="office-name">${safeText(claimFilters.office || "All offices")}</div><div class="office-stat"><small>Total claims</small><b>${total}</b></div><div class="office-stat"><small>Total balance</small><b>${currency(sumBalance(filtered))}</b></div><div class="office-stat"><small>Worked claims</small><b>${worked.length}</b></div><div class="office-stat"><small>Pending claims</small><b>${pending.length}</b></div>`;
+  $("claims-list-title").textContent = claimsView === "worked" ? "Worked Claims" : "Pending Claims";
+  $("claims-list-subtitle").textContent = claimsView === "worked" ? "Every claim that has an activity, whoever worked on it and whatever its status." : "Claims no one has opened or worked on yet. A claim moves to Worked Claims as soon as an activity is added.";
+  $("pending-claims-count").textContent = `${list.length} ${claimsView}`;
+  body.innerHTML = list.length ? list.map(c => `<tr>
+    <td><span class="claim-id">${safeText(c.id)}</span><span class="muted-cell">${safeText(c.office)}</span></td>
+    <td>${safeText(c.dos)}</td><td>${safeText(c.patient)}<span class="muted-cell">${safeText(c.patientId || "")}</span></td><td>${safeText(c.insurance)}</td>
+    <td>${Number(c.aging)} days</td><td>${safeText(c.lastNote)}</td>
+    <td>${safeText(c.assignee || "Unassigned")}</td>
+    <td>${safeText(lastWorkedBy(c))}</td>
+    <td class="table-balance">${currency(c.balance)}</td>
+    <td><span class="status-chip ${statusClass(c.status)}">${safeText(c.status)}</span></td>
+    <td><button class="claim-open" data-open-claim="${safeText(c.id)}">Work claim</button></td>
+  </tr>`).join("") : `<tr><td colspan="11" class="empty-state">${!total ? "No claims match these filters." : claimsView === "worked" ? "No claims have been worked yet." : "No pending claims. Every claim has been worked."}</td></tr>`;
+  // Two clickable bars: worked claims and pending claims (for the filtered claims, with their balance).
+  const pct = n => total ? Math.round(n / total * 100) : 0;
+  $("claims-progress").innerHTML = [["Worked claims","worked",worked,"#087F5B"], ["Pending claims","pending",pending,"#bc861e"]].map(([label, view, items, color]) =>
+    `<div class="claims-bar ${claimsView === view ? "active" : ""}" role="button" tabindex="0" data-claims-view="${view}"><div class="activity-row"><div class="activity-row-top"><span><i style="background:${color}"></i>${label}</span><span class="activity-row-qty">${items.length} of ${total} claims · ${currency(sumBalance(items))}</span></div><div class="progress"><span style="width:${pct(items.length)}%;background:${color}"></span></div><b class="activity-pct">${pct(items.length)}%</b></div></div>`).join("");
+  body.querySelectorAll("[data-open-claim]").forEach(button=>button.addEventListener("click",()=>openClaimDetails(button.dataset.openClaim)));
+}
+function syncClaimFilters() {
+  claimFilters = {office:$("ar-office-filter").value, aging:$("ar-aging-filter").value, carrier:$("ar-carrier-filter").value, search:$("ar-search").value.trim()};
+  renderClaims();
+}
+["ar-office-filter","ar-aging-filter","ar-carrier-filter"].forEach(id => $(id).addEventListener("change", syncClaimFilters));
+$("ar-search").addEventListener("input", syncClaimFilters);
+$("ar-reset-filters").addEventListener("click", () => { ["ar-office-filter","ar-aging-filter","ar-carrier-filter","ar-search"].forEach(id => $(id).value = ""); syncClaimFilters(); });
+$("claims-progress").addEventListener("click", event => { const b = event.target.closest("[data-claims-view]"); if (b) { claimsView = b.dataset.claimsView; renderClaims(); } });
+$("claims-progress").addEventListener("keydown", event => { const b = event.target.closest("[data-claims-view]"); if (b && (event.key === "Enter" || event.key === " ")) { event.preventDefault(); claimsView = b.dataset.claimsView; renderClaims(); } });
+
+const currentEmployee = "Ahsan Raza"; // the signed-in employee; added to history automatically
+function addClaimHistory(claim, action, note, status, by) {
+  const stamp = new Date();
+  const at = `${stamp.getFullYear()}-${String(stamp.getMonth()+1).padStart(2,"0")}-${String(stamp.getDate()).padStart(2,"0")} ${stamp.toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"})}`;
+  claim.history.unshift({at,by:by || "Team Leader",action,status,note});
+  claim.lastNote = note.slice(0,90);
+}
+function selectClaim(id) {
+  selectedClaimId=id;
+  const claim=claims.find(c=>c.id===id);
+  renderClaimHistory();
+}
+function renderClaimHistory() {
+  const claim=claims.find(c=>c.id===selectedClaimId);
+  const target=$("claim-history");
+  if(!claim){target.innerHTML='<p class="helper">Select a claim to view its activity history.</p>';return;}
+  if(!claim.history.length){target.innerHTML='<p class="empty-state">No activity recorded yet for this claim.</p>';return;}
+  target.innerHTML=claim.history.map(h=>`<div class="history-entry"><b>${safeText(h.action)}</b><span class="status-chip ${statusClass(h.status)}">${safeText(h.status)}</span><p>${safeText(h.note)}</p><small>${safeText(h.at)} · ${safeText(h.by)}</small></div>`).join("");
+}
+$("download-template").addEventListener("click",()=>{
+  const csv="claim_id,office,dos,patient,insurance,aging_days,last_note,balance,patient_id\nCL-2001,Sample Office,2026-10-01,Demo Patient,Delta Dental,45,Status requested,250.00,PT-9001\n";
+  const url=URL.createObjectURL(new Blob([csv],{type:"text/csv"}));
+  const a=document.createElement("a");a.href=url;a.download="teamtrack-claims-template.csv";a.click();URL.revokeObjectURL(url);
+});
+$("claims-file").addEventListener("change",async event=>{
+  const file=event.target.files[0];if(!file)return;
+  if(file.size>2*1024*1024){$("upload-message").textContent="File is larger than 2 MB. Choose a smaller CSV.";return;}
+  const text=await file.text();
+  const rows=text.trim().split(/\r?\n/);
+  const headers=(rows.shift()||"").split(",").map(v=>v.trim().toLowerCase());
+  const required=["claim_id","office","dos","patient","insurance","aging_days","last_note","balance"];
+  if(!required.every(key=>headers.includes(key))){$("upload-message").textContent="CSV columns do not match the template. Download the template and try again.";return;}
+  const index=key=>headers.indexOf(key);
+  let added=0;
+  rows.forEach(line=>{
+    if(!line.trim())return;
+    // Simple CSV parser for this starter. For production, use a vetted parser and server-side validation.
+    const cols=line.split(",").map(v=>v.trim());
+    const get=key=>cols[index(key)]||"";
+    const id=get("claim_id");
+    if(!id||claims.some(c=>c.id===id))return;
+    const balance=Number(get("balance"));const aging=Number(get("aging_days"));
+    claims.push({id,office:get("office"),dos:get("dos"),patient:get("patient"),patientId:get("patient_id"),insurance:get("insurance"),aging:Number.isFinite(aging)?aging:0,lastNote:get("last_note"),assignee:"",balance:Number.isFinite(balance)?balance:0,status:"In process",history:[]});
+    added++;
+  });
+  $("upload-message").textContent=`Imported ${added} new demo claim(s). They now appear under Pending Claims.`;
+  renderClaims();event.target.value="";
+});
+
+renderClaims();
+
+// ---------------- Demo claim details (DOB etc.) ----------------
+const todayClaimDetails = {
+  "CL-1001": {dob:"05/12/1985", updateNote:"Called insurance (Ref# 12345).", time:"0.5h"},
+  "CL-1002": {dob:"07/20/1990", updateNote:"Payment posted and reviewed.", time:"0.25h"},
+  "CL-1003": {dob:"11/03/1988", updateNote:"Sent follow-up email.", time:"0.25h"},
+  "CL-1004": {dob:"02/14/1992", updateNote:"Checked claim status online.", time:"0.5h"},
+  "CL-1005": {dob:"01/11/1987", updateNote:"Called billing department.", time:"0.5h"},
+  "CL-1006": {dob:"09/24/1984", updateNote:"Appeal documentation reviewed.", time:"0.75h"}
+};
+const todayMoney = value => "$" + Number(value || 0).toLocaleString("en-US", {minimumFractionDigits:2, maximumFractionDigits:2});
+// ---------------- Individual claim details page ----------------
+const claimNextDates = {};
+function openClaimDetails(id) {
+  const claim = claims.find(item => item.id === id);
+  if (!claim) return;
+  selectedClaimId = id;
+  editingHistoryIndex = null;
+  const patientDetail = todayClaimDetails[id] || {dob:"—", updateNote:claim.lastNote || "—", time:"—"};
+  const statusLabel = claim.status === "In process" ? "In Progress" : claim.status;
+  $("detail-claim-subtitle").textContent = `${claim.patient} · ${claim.office}`;
+  $("detail-claim-id").textContent = claim.id;
+  $("detail-claim-status").textContent = statusLabel;
+  $("detail-claim-status").className = `status-chip ${statusClass(claim.status)}`;
+  $("detail-balance").textContent = todayMoney(claim.balance);
+  $("detail-aging").textContent = `${claim.aging} days`;
+  $("detail-activities").textContent = claim.history.length;
+  // A next follow-up date only applies while the claim is In process.
+  $("detail-next-followup").textContent = claim.status === "In process" ? (claimNextDates[id] || "Not set") : "—";
+  $("detail-timeline-count").textContent = `${claim.history.length} ${claim.history.length === 1 ? "activity" : "activities"}`;
+  const info = [
+    ["Patient name",claim.patient],["Patient ID",claim.patientId || "—"],["Patient DOB",patientDetail.dob],
+    ["Office",claim.office],["Date of service",claim.dos],["Insurance",claim.insurance],
+    ["Aging",`${claim.aging} days`],["Assigned to",claim.assignee || "Unassigned"],["Last worked by",lastWorkedBy(claim)],
+    ["Claim ID",claim.id],["Claim status",statusLabel],["Outstanding balance",todayMoney(claim.balance)]
+  ];
+  $("detail-info-grid").innerHTML = info.map(([label,value])=>`<div class="claim-info-item"><small>${safeText(label)}</small><b>${safeText(value)}</b></div>`).join("");
+  renderDetailTimeline();
+  $("detail-status-select").value = ["In process","Follow-up required","Pending insurance","Resolved","Denied"].includes(claim.status) ? claim.status : "In process";
+  $("detail-update-note").value = "";
+  $("detail-representative").value = "";
+  $("detail-reference").value = "";
+  $("detail-followup-date").value = claimNextDates[id] || "";
+  toggleDetailFollowup();
+  showView("claim");
+  $("page-title").textContent = `Claim ${claim.id}`;
+}
+// Only the person who added an activity can edit it.
+let editingHistoryIndex = null;
+const historyActions = ["Called insurance","Checked payer portal","Submitted requested documents","Reviewed claim status","Left voicemail","Sent follow-up email","Other follow-up"];
+const claimStatuses = ["In process","Follow-up required","Pending insurance","Resolved","Denied"];
+const stampNow = () => { const n = new Date(); return `${n.getFullYear()}-${String(n.getMonth()+1).padStart(2,"0")}-${String(n.getDate()).padStart(2,"0")} ${n.toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"})}`; };
+function renderDetailTimeline() {
+  const claim = claims.find(item=>item.id===selectedClaimId);
+  const target = $("detail-timeline");
+  if (!claim || !claim.history.length) { target.innerHTML='<p class="empty-state">No activity recorded yet. Add the first update using Quick update.</p>'; return; }
+  target.innerHTML = claim.history.map((item,index)=>{
+    const canEdit = item.by === currentEmployee && item.status !== "Assignment";
+    const marker = `<div class="timeline-marker">${index===0?"•":"✓"}</div>`;
+    if (canEdit && index === editingHistoryIndex) {
+      const actions = historyActions.includes(item.action) ? historyActions : [item.action, ...historyActions];
+      return `<div class="detail-timeline-entry">${marker}<form class="timeline-edit-form" data-edit-form="${index}"><select name="action" aria-label="Action performed">${actions.map(a=>`<option ${a===item.action?"selected":""}>${safeText(a)}</option>`).join("")}</select><select name="status" aria-label="Claim status">${claimStatuses.map(s=>`<option ${s===item.status?"selected":""}>${s}</option>`).join("")}</select><textarea name="note" rows="3" maxlength="600" required aria-label="Work note">${safeText(item.note)}</textarea><div class="timeline-edit-actions"><button type="button" class="secondary-button" data-edit-cancel>Cancel</button><button class="primary-button" type="submit">Save changes</button></div></form></div>`;
+    }
+    return `<div class="detail-timeline-entry">${marker}<div class="timeline-entry-content"><div class="timeline-meta"><b>${safeText(item.action)}</b><span class="status-chip ${statusClass(item.status)}">${safeText(item.status)}</span>${canEdit ? `<button type="button" class="timeline-edit" data-edit-history="${index}">✎ Edit</button>` : ""}</div><p>${safeText(item.note)}</p><small>${safeText(item.at)} · ${safeText(item.by)}${item.edited ? ` · edited ${safeText(item.edited)}` : ""}</small></div></div>`;
+  }).join("");
+}
+$("detail-timeline").addEventListener("click", event => {
+  const edit = event.target.closest("[data-edit-history]");
+  if (edit) { editingHistoryIndex = Number(edit.dataset.editHistory); renderDetailTimeline(); return; }
+  if (event.target.closest("[data-edit-cancel]")) { editingHistoryIndex = null; renderDetailTimeline(); }
+});
+$("detail-timeline").addEventListener("submit", event => {
+  const form = event.target.closest("[data-edit-form]"); if (!form) return;
+  event.preventDefault();
+  const claim = claims.find(item=>item.id===selectedClaimId); if (!claim) return;
+  const index = Number(form.dataset.editForm), item = claim.history[index];
+  if (!item || item.by !== currentEmployee) { alert("Only the person who added this activity can edit it."); return; }
+  const note = form.elements.note.value.trim();
+  if (!note) { alert("The note cannot be empty."); return; }
+  item.action = form.elements.action.value; item.status = form.elements.status.value; item.note = note; item.edited = stampNow();
+  if (index === 0) { claim.status = item.status; claim.lastNote = note.slice(0,90); } // newest activity also sets the claim's current status
+  renderClaims(); openClaimDetails(claim.id);
+});
+function toggleDetailFollowup(){ $("detail-followup-wrap").hidden = $("detail-status-select").value !== "In process"; }
+$("detail-status-select").addEventListener("change", toggleDetailFollowup);
+$("detail-update-form").addEventListener("submit",event=>{
+  event.preventDefault();
+  const claim=claims.find(item=>item.id===selectedClaimId);
+  const note=$("detail-update-note").value.trim();
+  if(!claim || !note){alert("Select a claim and enter a work note.");return;}
+  const status=$("detail-status-select").value;
+  const next=status==="In process" ? $("detail-followup-date").value : "";
+  const rep=$("detail-representative").value.trim(), ref=$("detail-reference").value.trim();
+  const extras=[rep?`Representative: ${rep}.`:"", ref?`Reference #: ${ref}.`:"", next?`Next follow-up: ${next}.`:""].filter(Boolean).join(" ");
+  claim.status=status;
+  addClaimHistory(claim,$("detail-action").value,extras?`${note} ${extras}`:note,status,currentEmployee);
+  if(next) claimNextDates[claim.id]=next; else delete claimNextDates[claim.id];
+  logClaimWork(claim.id);
+  renderClaims();openClaimDetails(claim.id);
+});
+$("claim-back-to-tasks").addEventListener("click",()=>showView("ar"));
+$("detail-focus-note").addEventListener("click",()=>$("detail-update-note").focus());
+$("detail-print").addEventListener("click",()=>window.print());
+
+// ---------------- Daily activity tracker (Add Today Task) ----------------
+// Each task type has a daily target. Reaching the target = 100% activity.
+const activityTypes = [
+  {key:"claims", label:"Claims Worked", icon:"▤", target:40, color:"#087F5B", auto:true},
+  {key:"followups", label:"Insurance Follow-ups", icon:"☎", target:100, color:"#087F5B"},
+  {key:"verification", label:"Insurance Verification", icon:"✔", target:40, color:"#2A9D8F"},
+  {key:"audit", label:"Patient Audit", icon:"⌕", target:40, color:"#bc861e"},
+  {key:"payment", label:"Payment Posting", icon:"$", target:50000, money:true, color:"#d9534f"},
+  {key:"other", label:"Other", icon:"…", target:0, color:"#64748b"}
+];
+const localDateKey = () => { const d=new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`; };
+let activityLog = readStore(`teamtrack-activity-${localDateKey()}`, []);
+const saveActivity = () => writeStore(`teamtrack-activity-${localDateKey()}`, activityLog);
+const activityType = key => activityTypes.find(t => t.key === key) || activityTypes[activityTypes.length-1];
+const fmtQty = (type, value) => type.money ? "$" + Number(value).toLocaleString("en-US",{maximumFractionDigits:2}) : Number(value).toLocaleString("en-US");
+function activityTotals(entries = activityLog){
+  const totals = {}; activityTypes.forEach(t => totals[t.key] = 0);
+  entries.forEach(e => { if (e.type in totals) totals[e.type] += Number(e.qty) || 0; });
+  return totals;
+}
+// Total activity = sum of every task's percentage. One task at its target = 100%; extra work adds on top (can go above 100%).
+function activityOverall(totals){
+  return Math.round(activityTypes.filter(t => t.target > 0).reduce((s,t) => s + totals[t.key] / t.target * 100, 0));
+}
+function activityBarsHTML(){
+  const totals = activityTotals(), overall = activityOverall(totals);
+  const rows = activityTypes.filter(t => t.target > 0).map(t => {
+    const pct = totals[t.key] / t.target * 100;
+    return `<div class="activity-row"><div class="activity-row-top"><span><i style="background:${t.color}"></i>${t.label}</span><span class="activity-row-qty">${fmtQty(t,totals[t.key])} / ${fmtQty(t,t.target)}</span></div><div class="progress"><span style="width:${Math.min(100,pct)}%;background:${t.color}"></span></div><b class="activity-pct">${Math.round(pct)}%</b></div>`;
+  }).join("");
+  const other = totals.other ? `<p class="helper">Other work logged: ${totals.other} item(s)</p>` : "";
+  return `<div class="activity-overall"><div><small>OVERALL ACTIVITY</small><strong>${overall}%</strong></div><div class="progress big"><span style="width:${Math.min(100,overall)}%"></span></div>${overall > 100 ? `<small class="activity-extra">+${overall-100}% above the 100% daily target</small>` : ""}</div>${rows}${other}`;
+}
+function renderActivity(){
+  const html = activityBarsHTML();
+  ["activity-overview-bars","activity-page-bars"].forEach(id => { if ($(id)) $(id).innerHTML = html; });
+  renderHistory();
+  $("activity-overall").textContent = activityOverall(activityTotals()) + "%";
+  $("activity-entries").textContent = activityLog.length;
+  $("activity-entry-count").textContent = `${activityLog.length} ${activityLog.length === 1 ? "entry" : "entries"}`;
+  $("activity-log").innerHTML = activityLog.length ? [...activityLog].reverse().map(e => {
+    const t = activityType(e.type);
+    const name = e.type === "other" ? `Other: ${e.otherText}` : t.label;
+    const del = e.auto ? '<span class="activity-auto">Auto</span>' : `<button type="button" class="activity-del" data-del="${escapeHTML(e.id)}" aria-label="Delete entry">×</button>`;
+    return `<div class="activity-log-item"><div><b>${escapeHTML(name)}</b><small>${fullTime(e.at)}${e.note ? ` · ${escapeHTML(e.note)}` : ""}${e.office ? ` · Office: ${escapeHTML(e.office)}` : ""}${e.workDate ? ` · Date of Work: ${escapeHTML(e.workDate)}` : ""}${e.patientName ? ` · Patient: ${escapeHTML(e.patientName)}` : ""}${e.fileName ? ` · File selected: ${escapeHTML(e.fileName)}` : ""}</small></div><span class="activity-qty">${escapeHTML(fmtQty(t,e.qty))}</span>${del}</div>`;
+  }).join("") : '<p class="empty-state">Nothing logged yet. Click “＋ Add” to record your first task.</p>';
+}
+// Claims the employee works on are counted automatically: one per distinct claim per day.
+function logClaimWork(claimId){
+  if (activityLog.some(e => e.auto && e.claimId === claimId)) return;
+  activityLog.push({id:`ACT-auto-${claimId}-${Date.now()}`, type:"claims", auto:true, claimId, otherText:"", qty:1, note:`Claim ${claimId} worked`, at:new Date().toISOString()});
+  saveActivity(); renderActivity();
+}
+let activityChoice = null;
+$("activity-options").innerHTML = activityTypes.filter(t => !t.auto).map(t => `<button type="button" class="activity-option" data-type="${t.key}"><span style="color:${t.color}">${t.icon}</span>${t.label}</button>`).join("");
+function showActivityPicker(){
+  activityChoice = null;
+  $("activity-options").hidden = false; $("activity-modal-sub").hidden = false; $("activity-form").hidden = true;
+}
+function openActivityModal(){ showActivityPicker(); $("activity-modal").hidden = false; const first = $("activity-options").querySelector("button"); if (first) first.focus(); }
+function closeActivityModal(){ $("activity-modal").hidden = true; }
+function chooseActivity(key){
+  activityChoice = activityType(key);
+  const isOther = activityChoice.key === "other";
+  $("activity-options").hidden = true; $("activity-modal-sub").hidden = true; $("activity-form").hidden = false;
+  $("activity-chosen").textContent = activityChoice.label;
+  $("activity-other-label").hidden = !isOther; $("activity-other-text").hidden = !isOther; $("activity-other-text").required = isOther;
+  $("activity-other-text").value = ""; $("activity-note").value = "";
+  $("activity-qty-label").textContent = activityChoice.key === "verification" ? "Number of BOB" : activityChoice.money ? "Amount posted ($)" : isOther ? "Quantity (how many)" : `Quantity (${activityChoice.label.toLowerCase()} done)`;
+  $("activity-qty").step = activityChoice.money ? "0.01" : "1";
+  $("activity-qty").min = activityChoice.money ? "0.01" : "1";
+  $("activity-qty").value = "";
+  const verify = activityChoice.key === "verification", payment = activityChoice.key === "payment";
+  $("activity-verification-fields").hidden = !verify;
+  $("activity-payment-fields").hidden = !payment;
+  $("activity-office-name").value = "";
+  $("activity-work-date").value = keyOfDate(new Date());
+  $("activity-office-name").required = verify;
+  $("activity-work-date").required = verify;
+  $("activity-payment-file").value = "";
+  $("activity-payment-file").required = payment;
+  $("activity-note-label").hidden = verify;
+  $("activity-note").hidden = verify;
+  (isOther ? $("activity-other-text") : $("activity-qty")).focus();
+}
+document.querySelectorAll(".add-activity-trigger").forEach(b => b.addEventListener("click", openActivityModal));
+$("activity-close").addEventListener("click", closeActivityModal);
+$("activity-back").addEventListener("click", showActivityPicker);
+$("activity-modal").addEventListener("click", event => { if (event.target === $("activity-modal")) closeActivityModal(); });
+document.addEventListener("keydown", event => { if (event.key === "Escape" && !$("activity-modal").hidden) closeActivityModal(); });
+$("activity-options").addEventListener("click", event => { const b = event.target.closest("[data-type]"); if (b) chooseActivity(b.dataset.type); });
+$("activity-form").addEventListener("submit", event => {
+  event.preventDefault();
+  if (!activityChoice) return;
+  const qty = Number($("activity-qty").value);
+  const otherText = $("activity-other-text").value.trim();
+  if (!Number.isFinite(qty) || qty <= 0) return;
+  if (activityChoice.key === "other" && !otherText) return;
+  const verification = activityChoice.key === "verification";
+  const payment = activityChoice.key === "payment";
+  const office = verification ? $("activity-office-name").value.trim() : "";
+  const workDate = verification ? $("activity-work-date").value : "";
+  if (verification && (!office || !workDate || !Number.isInteger(qty))) { alert("Enter a valid Number of BOB, Office Name and Date of Work."); return; }
+  const selectedFile = $("activity-payment-file").files[0];
+  if (payment && !selectedFile) { alert("Select a payment posting file."); return; }
+  activityLog.push({id:`ACT-${Date.now()}`, type:activityChoice.key, otherText, qty, note:verification?"":$("activity-note").value.trim(), office, workDate, fileName:payment?selectedFile.name:"", at:new Date().toISOString()});
+  saveActivity(); renderActivity(); closeActivityModal();
+});
+document.addEventListener("click", event => {
+  const del = event.target.closest("[data-del]");
+  if (!del) return;
+  activityLog = activityLog.filter(e => e.id !== del.dataset.del);
+  saveActivity(); renderActivity();
+});
+
+// ---------------- Work history (weekly / monthly graph + totals) ----------------
+let historyRange = "week"; // "week" = last 7 days, "month" = last 30 days
+const keyOfDate = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+const shortDate = d => d.toLocaleDateString([], {month:"short", day:"numeric"});
+function historyDays(n){
+  const now = new Date(), days = [];
+  for (let i = n - 1; i >= 0; i--) days.push(new Date(now.getFullYear(), now.getMonth(), now.getDate() - i));
+  return days;
+}
+function entriesForDay(d){ const k = keyOfDate(d); return k === localDateKey() ? activityLog : readStore(`teamtrack-activity-${k}`, []); }
+function dayPercents(totals){ const out = {}; activityTypes.filter(t => t.target > 0).forEach(t => out[t.key] = totals[t.key] / t.target * 100); return out; }
+function historyChartSVG(rows){
+  const W = 700, H = 250, L = 40, R = 10, T = 14, B = 36, plotW = W - L - R, plotH = H - T - B, n = rows.length;
+  const dayMax = Math.max(0, ...rows.map(r => r.overall));
+  const maxY = Math.max(100, Math.ceil(dayMax / 50) * 50);
+  const y = v => T + plotH - (v / maxY) * plotH;
+  const slot = plotW / n, barW = Math.min(46, slot * 0.64);
+  let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Daily activity percentage">`;
+  for (let v = 0; v <= maxY; v += 50) svg += `<line x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}" stroke="#E2ECE6"/><text x="${L-6}" y="${y(v)+3}" text-anchor="end" font-size="10" fill="#8390a3">${v}%</text>`;
+  svg += `<line x1="${L}" x2="${W-R}" y1="${y(100)}" y2="${y(100)}" stroke="#087F5B" stroke-dasharray="5 4"/>`;
+  rows.forEach((r, i) => {
+    const x = L + slot * i + (slot - barW) / 2;
+    let acc = 0;
+    activityTypes.filter(t => t.target > 0).forEach(t => {
+      const v = r.pcts[t.key]; if (!(v > 0)) return;
+      svg += `<rect x="${x.toFixed(1)}" y="${y(acc+v).toFixed(1)}" width="${barW.toFixed(1)}" height="${(y(acc)-y(acc+v)).toFixed(1)}" fill="${t.color}"/>`;
+      acc += v;
+    });
+    const detail = activityTypes.filter(t => r.totals[t.key] > 0).map(t => `${t.label}: ${fmtQty(t, r.totals[t.key])}`).join(" · ") || "No work logged";
+    svg += `<rect x="${(L + slot*i).toFixed(1)}" y="${T}" width="${slot.toFixed(1)}" height="${plotH}" fill="transparent"><title>${escapeHTML(shortDate(r.date))} — ${r.overall}%\n${escapeHTML(detail)}</title></rect>`;
+    const cx = (L + slot * i + slot / 2).toFixed(1);
+    if (n <= 7) svg += `<text x="${cx}" y="${H-18}" text-anchor="middle" font-size="10" font-weight="700" fill="#52617b">${r.date.toLocaleDateString([], {weekday:"short"})}</text><text x="${cx}" y="${H-5}" text-anchor="middle" font-size="9" fill="#8390a3">${r.date.getDate()}</text>`;
+    else if (i % 5 === 0 || i === n - 1) svg += `<text x="${cx}" y="${H-14}" text-anchor="middle" font-size="9" fill="#8390a3">${shortDate(r.date)}</text>`;
+  });
+  return svg + "</svg>";
+}
+function historyHTML(){
+  const n = historyRange === "week" ? 7 : 30;
+  const days = historyDays(n);
+  const rows = days.map(d => { const totals = activityTotals(entriesForDay(d)); const pcts = dayPercents(totals); return {date:d, totals, pcts, overall:Math.round(Object.values(pcts).reduce((a,b) => a + b, 0))}; });
+  const sums = {}; activityTypes.forEach(t => sums[t.key] = rows.reduce((s, r) => s + r.totals[t.key], 0));
+  const worked = rows.filter(r => r.overall > 0 || r.totals.other > 0).length;
+  const avg = Math.round(rows.reduce((s, r) => s + r.overall, 0) / n);
+  const label = historyRange === "week" ? "this week" : "this month";
+  const cards = [
+    ["Claims submitted", fmtQty(activityType("claims"), sums.claims), "#087F5B"],
+    ["Insurance follow-ups", fmtQty(activityType("followups"), sums.followups), "#087F5B"],
+    ["Insurance verifications", fmtQty(activityType("verification"), sums.verification), "#2A9D8F"],
+    ["Patient audits", fmtQty(activityType("audit"), sums.audit), "#bc861e"],
+    ["Payments posted", fmtQty(activityType("payment"), sums.payment), "#d9534f"],
+    ["Other tasks", fmtQty(activityType("other"), sums.other), "#64748b"],
+    ["Days worked", `${worked} of ${n}`, "#183B56"],
+    ["Average daily activity", `${avg}%`, "#183B56"]
+  ].map(([l, v, c]) => `<div class="history-total" style="border-top-color:${c}"><small>${l}</small><b>${escapeHTML(v)}</b></div>`).join("");
+  const legend = activityTypes.filter(t => t.target > 0).map(t => `<span><i style="background:${t.color}"></i>${t.label}</span>`).join("") + `<span><i class="target-key"></i>100% daily target</span>`;
+  return `<article class="panel history-panel">
+    <div class="panel-heading"><div><h3>Work history</h3><p>${shortDate(days[0])} – ${shortDate(days[n-1])} · each bar is one day's activity %</p></div>
+    <div class="range-toggle"><button type="button" data-range="week" class="${historyRange==="week"?"active":""}">Weekly</button><button type="button" data-range="month" class="${historyRange==="month"?"active":""}">Monthly</button></div></div>
+    <div class="history-chart">${historyChartSVG(rows)}</div>
+    <div class="history-legend">${legend}</div>
+    <h4 class="history-total-title">Total work done ${label}</h4>
+    <div class="history-totals">${cards}</div>
+    <div class="history-demo"><span>Demo only:</span><button type="button" class="text-button" id="history-load-sample">Load sample history</button><button type="button" class="text-button" id="history-clear-sample">Remove sample history</button></div>
+  </article>`;
+}
+function renderHistory(){ const html = historyHTML(); document.querySelectorAll(".history-mount").forEach(m => m.innerHTML = html); }
+function loadSampleHistory(){
+  for (let i = 1; i < 60; i++) {
+    const d = new Date(); d.setHours(12,0,0,0); d.setDate(d.getDate() - i);
+    const k = keyOfDate(d), storeKey = `teamtrack-activity-${k}`;
+    if ((readStore(storeKey, []) || []).length || d.getDay() === 0) continue;
+    const r = n => ((i * 7919 + n * 104729) % 1000) / 1000; // repeatable pseudo-random 0..1
+    const mk = (type, qty, n) => ({id:`ACT-demo-${k}-${type}`, type, otherText:"", qty, note:"Sample data", demo:true, at:d.toISOString()});
+    writeStore(storeKey, [mk("claims", Math.round(6 + r(1)*10), 1), mk("followups", Math.round(15 + r(2)*25), 2), mk("verification", Math.round(4 + r(3)*8), 3), mk("audit", Math.round(3 + r(4)*7), 4), mk("payment", Math.round(5000 + r(5)*9000), 5)]);
+  }
+  renderHistory();
+}
+function clearSampleHistory(){
+  for (let i = 1; i < 60; i++) {
+    const d = new Date(); d.setDate(d.getDate() - i);
+    const storeKey = `teamtrack-activity-${keyOfDate(d)}`, list = readStore(storeKey, []) || [];
+    if (list.some(e => e.demo)) writeStore(storeKey, list.filter(e => !e.demo));
+  }
+  renderHistory();
+}
+document.addEventListener("click", event => {
+  const range = event.target.closest("[data-range]");
+  if (range) { historyRange = range.dataset.range; renderHistory(); return; }
+  if (event.target.id === "history-load-sample") loadSampleHistory();
+  if (event.target.id === "history-clear-sample") clearSampleHistory();
+});
+
+renderActivity();
+
+// Employee navigation is always visible as horizontal header tabs.
+
+
+// Leave workflow demo. Browser storage is not a shared server or an email service.
+let leaveRequests = readStore("teamtrack-leave-requests-v1", []);
+const leaveStatusLabel = {lead_pending:"Awaiting Team Lead",hr_pending:"Awaiting HR",approved:"Approved",lead_rejected:"Rejected by Team Lead",hr_rejected:"Rejected by HR"};
+function saveLeaves(){writeStore("teamtrack-leave-requests-v1",leaveRequests);}
+function leaveCard(request,reviewer=""){
+ const history=(request.history||[]).map(e=>`<div class="leave-history-line"><b>${escapeHTML(e.by)}</b> · ${escapeHTML(e.action)} <small>${new Date(e.at).toLocaleString()}</small>${e.comment?`<p>${escapeHTML(e.comment)}</p>`:""}</div>`).join("");
+ const review=reviewer?`<div class="leave-review-controls"><label for="leave-comment-${request.id}">Reviewer comment ${reviewer==='reject'?'':'(required for rejection)'}</label><textarea id="leave-comment-${request.id}" rows="2" maxlength="400" placeholder="Optional for approval; required for rejection"></textarea><div class="leave-review-buttons"><button type="button" class="primary-button" data-leave-id="${request.id}" data-leave-decision="approve">Approve${reviewer==='lead'?' & send to HR':''}</button><button type="button" class="secondary-button" data-leave-id="${request.id}" data-leave-decision="reject">Reject</button></div></div>`:"";
+ return `<div class="leave-request"><div class="leave-request-top"><strong>${escapeHTML(request.type)}</strong><span class="leave-status ${escapeHTML(request.status)}">${escapeHTML(leaveStatusLabel[request.status]||request.status)}</span></div><p><b>${escapeHTML(request.start)} → ${escapeHTML(request.end)}</b> · ${request.days} calendar day(s)</p><p>${escapeHTML(request.reason)}</p><div class="leave-history">${history}</div>${review}</div>`;
+}
+function renderLeaves(){
+ const role=$("role-select").value;
+ $("leave-my-list").innerHTML=leaveRequests.length?leaveRequests.map(r=>leaveCard(r)).join(""):'<p class="empty-state">No leave requests yet. Submit your first request using the form.</p>';
+ $("lead-leave-panel").hidden=role!=="Team Leader";
+ $("hr-leave-panel").hidden=role!=="HR Manager";
+ const lead=leaveRequests.filter(r=>r.status==="lead_pending"),hr=leaveRequests.filter(r=>r.status==="hr_pending");
+ $("leave-lead-queue").innerHTML=lead.length?lead.map(r=>leaveCard(r,"lead")).join(""):'<p class="empty-state">No requests awaiting Team Lead review.</p>';
+ $("leave-hr-queue").innerHTML=hr.length?hr.map(r=>leaveCard(r,"hr")).join(""):'<p class="empty-state">No requests awaiting HR approval.</p>';
+ $("leave-form").closest("article").hidden=role!=="Employee";renderLeaveCalendar();
+}
+$("leave-form").addEventListener("submit",event=>{
+ event.preventDefault();if($("role-select").value!=="Employee")return;
+ const start=$("leave-start").value,end=$("leave-end").value,reason=$("leave-reason").value.trim();
+ if(!start||!end||end<start){alert("Please choose valid leave dates.");return;}
+ if(!reason){alert("Please enter a reason.");return;}
+ const days=Math.round((new Date(end+"T12:00:00")-new Date(start+"T12:00:00"))/86400000)+1;
+ if(days>365){alert("Please select a range of 365 days or fewer.");return;}
+ if(!confirm(`Submit ${days} calendar day(s) of leave for Team Lead review?`))return;
+ const id="LV-"+Date.now().toString(36).toUpperCase();
+ leaveRequests.unshift({id,employee:"Ahsan Raza",type:$("leave-type").value,start,end,days,reason,status:"lead_pending",createdAt:new Date().toISOString(),history:[{by:"Ahsan Raza",action:"Submitted request to Team Lead",at:new Date().toISOString()}]});
+ saveLeaves();$("leave-form").reset();renderLeaves();addNotification("Leave submitted",`${days} day(s) of ${$("leave-type").value} requested for ${start} to ${end}.`,"Leave");alert("Leave request submitted in this browser demo. Switch to Team Leader to review it. No email was sent.");
+});
+$("leaves-view").addEventListener("click",event=>{
+ const button=event.target.closest("[data-leave-decision]");if(!button)return;
+ const request=leaveRequests.find(r=>r.id===button.dataset.leaveId);if(!request)return;
+ const role=$("role-select").value,lead=role==="Team Leader"&&request.status==="lead_pending",hr=role==="HR Manager"&&request.status==="hr_pending";
+ if(!lead&&!hr){alert("This request is not awaiting review by the selected demo role.");return;}
+ const decision=button.dataset.leaveDecision,comment=$("leave-comment-"+request.id)?.value.trim()||"";
+ if(decision==="reject"&&!comment){alert("Add a reason before rejecting the request.");return;}
+ const action=decision==="approve"?"approve":"reject";
+ if(!confirm(`${action[0].toUpperCase()+action.slice(1)} ${request.employee}'s leave request?`))return;
+ request.status=decision==="approve"?(lead?"hr_pending":"approved"):(lead?"lead_rejected":"hr_rejected");
+ request.history.push({by:lead?"Team Lead":"HR Manager",action:decision==="approve"?(lead?"Approved and forwarded to HR":"Final approval granted"):"Rejected request",comment,at:new Date().toISOString()});
+ saveLeaves();renderLeaves();addNotification("Leave decision",`${request.type}: ${leaveStatusLabel[request.status]}.`,"Leave");alert(lead&&decision==="approve"?"Forwarded to HR review (demo only).":"Decision saved (demo only). No email was sent.");
+});
+// Enhanced attendance: summarize all locally stored day records.
+function renderAttendanceHistory(){
+ const entries=[];
+ for(let i=0;i<localStorage.length;i++){
+  const key=localStorage.key(i);if(!key||!/^teamtrack-attendance-\d{4}-\d{2}-\d{2}$/.test(key))continue;
+  const item=readStore(key,null);if(!item?.clockIn)continue;
+  let end=item.clockOut?new Date(item.clockOut).getTime():key.endsWith(dateKey())?Date.now():new Date(item.clockIn).getTime();
+  let ms=Math.max(0,end-new Date(item.clockIn).getTime());
+  (item.events||[]).filter(e=>e.kind==='break-start').forEach(b=>{const finish=(item.events||[]).find(e=>e.kind==='break-end'&&e.breakId===b.breakId);if(finish)ms-=Math.max(0,new Date(finish.at)-new Date(b.at));else if(key.endsWith(dateKey())&&item.activeBreak?.id===b.breakId)ms-=Math.max(0,Date.now()-new Date(b.at));});
+  entries.push({date:key.slice(-10),ms:Math.max(0,ms),in:item.clockIn,out:item.clockOut});
+ }
+ entries.sort((a,b)=>b.date.localeCompare(a.date));const total=entries.reduce((n,e)=>n+e.ms,0);
+ const fmt=ms=>`${Math.floor(ms/3600000)}h ${String(Math.floor(ms/60000)%60).padStart(2,'0')}m`;
+ $("attendance-days-count").textContent=`${entries.length} recorded days`;
+ $("attendance-days-present").textContent=entries.length;
+ $("attendance-total-hours").textContent=fmt(total);
+ $("attendance-average-hours").textContent=fmt(entries.length?total/entries.length:0);
+ $("attendance-history").innerHTML=entries.length?entries.slice(0,14).map(e=>`<div class="attendance-history-row"><b>${escapeHTML(e.date)}</b><span>${fullTime(e.in)} – ${e.out?fullTime(e.out):'In progress'}</span><strong>${fmt(e.ms)}</strong></div>`).join(''):'<p class="empty-state">Clock in to start building your attendance history.</p>';
+}
+const leaveAllowances={'Annual leave':20,'Casual leave':10,'Sick leave':10,'Emergency leave':5};
+let leaveCalendarMonth=new Date();leaveCalendarMonth.setDate(1);
+function renderLeaveCalendar(){
+ const y=leaveCalendarMonth.getFullYear(),m=leaveCalendarMonth.getMonth();
+ $("leave-calendar-title").textContent=leaveCalendarMonth.toLocaleDateString(undefined,{month:'long',year:'numeric'});
+ const weekdays=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];const offset=new Date(y,m,1).getDay(),days=new Date(y,m+1,0).getDate();
+ let html=weekdays.map(d=>`<div class="calendar-weekday">${d}</div>`).join('');
+ for(let i=0;i<offset;i++)html+='<div class="calendar-empty"></div>';
+ for(let day=1;day<=days;day++){
+  const date=`${y}-${String(m+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+  const matches=leaveRequests.filter(r=>r.start<=date&&r.end>=date);
+  const cls=matches.some(r=>r.status==='approved')?'approved':matches.some(r=>r.status.endsWith('rejected'))?'rejected':matches.length?'pending':'';
+  const title=matches.map(r=>`${r.type}: ${leaveStatusLabel[r.status]||r.status}`).join('; ');
+  html+=`<div class="calendar-day ${cls}" title="${escapeHTML(title)}"><span>${day}</span>${matches.length?`<small>${escapeHTML(matches[0].type.replace(' leave',''))}</small>`:''}</div>`;
+ }
+ $("leave-calendar").innerHTML=html;
+ const year=new Date().getFullYear();
+ $("leave-balance-grid").innerHTML=Object.entries(leaveAllowances).map(([type,allowance])=>{
+  const used=leaveRequests.filter(r=>r.type===type&&r.status==='approved').reduce((sum,r)=>{
+   const start=new Date(Math.max(new Date(r.start+'T12:00:00'),new Date(year,0,1)));const end=new Date(Math.min(new Date(r.end+'T12:00:00'),new Date(year,11,31)));
+   return sum+(end>=start?Math.round((end-start)/86400000)+1:0);
+  },0);
+  const pending=leaveRequests.filter(r=>r.type===type&&['lead_pending','hr_pending'].includes(r.status)).length;
+  return `<div class="leave-balance-card"><small>${escapeHTML(type)}</small><strong>${Math.max(0,allowance-used)} <small>/ ${allowance} days</small></strong><span>${used} used · ${pending} pending request(s)</span></div>`;
+ }).join('');
+}
+$("leave-prev-month").addEventListener('click',()=>{leaveCalendarMonth.setMonth(leaveCalendarMonth.getMonth()-1);renderLeaveCalendar();});
+$("leave-next-month").addEventListener('click',()=>{leaveCalendarMonth.setMonth(leaveCalendarMonth.getMonth()+1);renderLeaveCalendar();});
+renderAttendanceHistory();renderLeaveCalendar();
+
+renderLeaves();
+
+
+</script>
+<script>
+(function(){
+  const gate=document.getElementById('easy-login-screen');
+  const shell=document.querySelector('.app-shell');
+  function update(){const logged=sessionStorage.getItem('teamtrack_demo_logged_in')==='yes';gate.hidden=logged;shell.style.display=logged?'':'none';}
+  document.getElementById('easy-login-form').addEventListener('submit',function(e){
+    e.preventDefault();
+    const email=document.getElementById('easy-email').value.trim();
+    const password=document.getElementById('easy-password').value;
+    if(email.toLowerCase()==='employ@xeven.com' && password==='Employ@123'){
+      sessionStorage.setItem('teamtrack_demo_logged_in','yes');document.getElementById('easy-error').textContent='';update();
+    } else document.getElementById('easy-error').textContent='Incorrect email or password.';
+  });
+  document.getElementById('logout-button').addEventListener('click',function(){sessionStorage.removeItem('teamtrack_demo_logged_in');document.getElementById('easy-password').value='';update();});
+  update();
+})();
+</script>
+</body>
+</html>
